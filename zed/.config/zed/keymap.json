@@ -1,0 +1,37 @@
+[
+    {
+        "bindings": {
+            "ctrl-t": "terminal_panel::ToggleFocus",
+            "ctrl-shift-t": "workspace::NewTerminal",
+            "ctrl-w": "pane::CloseActiveItem"
+        }
+    },
+    {
+        "context": "Editor",
+        "bindings": {
+            "ctrl-i": "assistant::InlineAssist"
+        }
+    },
+    {
+        "context": "ProjectPanel",
+        "bindings": {
+            "ctrl-d": "project_panel::NewDirectory",
+            "ctrl-f": "project_panel::NewFile"
+        }
+    },
+    {
+        "context": "Pane",
+        "bindings": {
+            "ctrl-k ctrl-h": "pane::SplitLeft",
+            "ctrl-k ctrl-j": "pane::SplitDown",
+            "ctrl-k ctrl-l": "pane::SplitRight",
+            "ctrl-k ctrl-k": "pane::SplitUp",
+            "ctrl-k h": ["workspace::ActivatePaneInDirection", "Left"],
+            "ctrl-k j": ["workspace::ActivatePaneInDirection", "Down"],
+            "ctrl-k l": ["workspace::ActivatePaneInDirection", "Right"],
+            "ctrl-k k": ["workspace::ActivatePaneInDirection", "Up"],
+            "ctrl-[": "workspace::ActivateNextPane",
+            "ctrl-]": "workspace::ActivatePreviousPane"
+        }
+    }
+]

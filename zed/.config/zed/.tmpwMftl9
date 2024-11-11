@@ -1,0 +1,25 @@
+{"signed_in":false,"milliseconds_since_first_event":0,"type":"App","operation":"open"}
+{"signed_in":false,"milliseconds_since_first_event":23,"type":"Setting","setting":"theme","value":"One Dark"}
+{"signed_in":false,"milliseconds_since_first_event":23,"type":"Setting","setting":"keymap","value":"VSCode"}
+{"signed_in":false,"milliseconds_since_first_event":0,"type":"Extension","extension_id":"fish","version":"0.0.8"}
+{"signed_in":false,"milliseconds_since_first_event":0,"type":"Extension","extension_id":"html","version":"0.1.1"}
+{"signed_in":false,"milliseconds_since_first_event":0,"type":"Extension","extension_id":"slint","version":"0.0.3"}
+{"signed_in":false,"milliseconds_since_first_event":368,"type":"App","operation":"open node project"}
+{"signed_in":true,"milliseconds_since_first_event":28879,"type":"Editor","operation":"open","file_extension":"rs","vim_mode":true,"copilot_enabled":true,"copilot_enabled_for_language":true}
+{"signed_in":true,"milliseconds_since_first_event":34062,"type":"Editor","operation":"open","file_extension":"rs","vim_mode":true,"copilot_enabled":true,"copilot_enabled_for_language":true}
+{"signed_in":true,"milliseconds_since_first_event":39754,"type":"Editor","operation":"open","file_extension":"rs","vim_mode":true,"copilot_enabled":true,"copilot_enabled_for_language":true}
+{"signed_in":true,"milliseconds_since_first_event":43190,"type":"Action","source":"command palette","action":":write"}
+{"signed_in":true,"milliseconds_since_first_event":43190,"type":"Editor","operation":"save","file_extension":"rs","vim_mode":true,"copilot_enabled":true,"copilot_enabled_for_language":true}
+{"signed_in":true,"milliseconds_since_first_event":47690,"type":"Editor","operation":"open","file_extension":"rs","vim_mode":true,"copilot_enabled":true,"copilot_enabled_for_language":true}
+{"signed_in":true,"milliseconds_since_first_event":126793,"type":"Assistant","conversation_id":"82f93d2b-053a-483b-85b3-a52dc2576940","kind":"panel","model":"openai/gpt-4o","response_latency":null,"error_message":"Failed to connect to OpenAI API: You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."}
+{"signed_in":true,"milliseconds_since_first_event":239977,"type":"Memory","memory_in_bytes":565084160,"virtual_memory_in_bytes":41351778304}
+{"signed_in":true,"milliseconds_since_first_event":239977,"type":"Cpu","usage_as_percentage":4.871361,"core_count":32}
+{"signed_in":true,"milliseconds_since_first_event":0,"type":"Assistant","conversation_id":"82f93d2b-053a-483b-85b3-a52dc2576940","kind":"panel","model":"openai/gpt-4o","response_latency":{"secs":0,"nanos":546917421},"error_message":null}
+{"signed_in":true,"milliseconds_since_first_event":82164,"type":"Action","source":"command palette","action":"assistant: quote selection"}
+{"signed_in":true,"milliseconds_since_first_event":91374,"type":"Assistant","conversation_id":"82f93d2b-053a-483b-85b3-a52dc2576940","kind":"panel","model":"openai/gpt-4o","response_latency":null,"error_message":"Failed to connect to OpenAI API: You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."}
+{"signed_in":true,"milliseconds_since_first_event":107926,"type":"Memory","memory_in_bytes":686739456,"virtual_memory_in_bytes":41356025856}
+{"signed_in":true,"milliseconds_since_first_event":107926,"type":"Cpu","usage_as_percentage":3.9739482,"core_count":32}
+{"signed_in":true,"milliseconds_since_first_event":136063,"type":"Assistant","conversation_id":"82f93d2b-053a-483b-85b3-a52dc2576940","kind":"panel","model":"openai/gpt-4o","response_latency":null,"error_message":"Failed to connect to OpenAI API: You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."}
+{"signed_in":true,"milliseconds_since_first_event":156947,"type":"Assistant","conversation_id":"82f93d2b-053a-483b-85b3-a52dc2576940","kind":"panel","model":"openai/gpt-4o","response_latency":null,"error_message":"Failed to connect to OpenAI API: You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."}
+{"signed_in":true,"milliseconds_since_first_event":241101,"type":"InlineCompletion","provider":"copilot","suggestion_accepted":false,"file_extension":null}
+{"signed_in":true,"milliseconds_since_first_event":241902,"type":"Assistant","conversation_id":"e17a3e6f-c6e9-45a4-b554-0a34b37fcd1b","kind":"panel","model":"openai/gpt-4o","response_latency":null,"error_message":"Failed to connect to OpenAI API: You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors."}
