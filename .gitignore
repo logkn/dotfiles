@@ -1,0 +1,2 @@
+# remove any zed files that start with .tmp
+zed/.config/zed/.tmp*
