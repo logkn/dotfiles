@@ -13,6 +13,7 @@
     //     //     "version": "1"
     //     // }
     // },
+    "theme": "Catppuccin Macchiato",
     "assistant": {
         // "default_model": {
         //     "provider": "anthropic",
@@ -82,6 +83,10 @@
                     "arguments": ["-"]
                 }
             }
+        },
+        "Lua": {
+            "formatter": "auto"
+
         }
     },
     "lsp": {
