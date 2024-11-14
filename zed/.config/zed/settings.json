@@ -1,4 +1,4 @@
-// For information on how to configure Zed, see the Zed
+// For information on how to configure Z$SCRIPTS/ed, see the Zed
 // documentation: https://zed.dev/docs/configuring-zed
 //
 // To see all of Zed's default settings without changing your
@@ -60,7 +60,7 @@
         "Rust": {
             // "formatter": {
             //     "external": {
-            //         "command": "/run/media/logan/storage/development/Scripts/format_rust.sh",
+            //         "command": "$SCRIPTS/format_rust.sh",
             //         "arguments": ["-"]
             //     }
             // },
@@ -79,7 +79,7 @@
         "Python": {
             "formatter": {
                 "external": {
-                    "command": "/run/media/logan/storage/Development/Scripts/format_python.sh",
+                    "command": "$SCRIPTS/format_python.sh",
                     "arguments": ["-"]
                 }
             }

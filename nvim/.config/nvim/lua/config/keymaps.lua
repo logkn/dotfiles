@@ -17,3 +17,10 @@ keymap.set('n', '<c-k>', ':wincmd k<CR>')
 keymap.set('n', '<c-j>', ':wincmd j<CR>')
 keymap.set('n', '<c-h>', ':wincmd h<CR>')
 keymap.set('n', '<c-l>', ':wincmd l<CR>')
+
+-- telescope
+keymap.set('n', '<c-p>', '<cmd>Telescope find_files<cr>')
+
+-- Always use very magic mode for searching
+keymap.set("n", "/", [[/\v]])
+
