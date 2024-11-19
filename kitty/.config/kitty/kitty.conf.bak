@@ -1,8 +1,8 @@
-shell /usr/bin/fish
+shell $SHELL
 
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Mocha
+# Catppuccin-Macchiato
 include current-theme.conf
 # END_KITTY_THEME
 
@@ -10,3 +10,10 @@ font_family MesloLGS Nerd Font Mono
 bold_font auto
 italic_font auto
 bold_italic_font auto
+
+# Optimizations
+input_delay 0
+repaint_delay 2
+sync_to_monitor no
+wayland_enable_ime no
+
