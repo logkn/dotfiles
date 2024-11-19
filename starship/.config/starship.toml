@@ -1,5 +1,8 @@
 format = """
+[](fg:overlay)\
+$os\
 $username\
+[](fg:overlay) \
 $directory\
 $git_branch\
 $git_status\
@@ -21,6 +24,7 @@ $time\n  \
 [󱞪](fg:iris) \
 """
 
+
 palette = "rose-pine-moon"
 
 [palettes.rose-pine-moon]
@@ -31,6 +35,38 @@ rose = '#ea9a97'
 pine = '#3e8fb0'
 foam = '#9ccfd8'
 iris = '#c4a7e7'
+
+
+[os]
+disabled = false
+style = "bg:overlay fg:iris"
+format="[$symbol]($style)"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+Garuda = ""
+
+
 
 [directory]
 format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
@@ -77,7 +113,7 @@ use_12hr = true
 
 [username]
 disabled = false
-format = "[](fg:overlay)[ 󰧱 $user ]($style)[](fg:overlay) "
+format = "[ $user ]($style)"
 show_always = true
 style_root = "bg:overlay fg:iris"
 style_user = "bg:overlay fg:iris"
@@ -161,25 +197,3 @@ style = "bg:overlay fg:pine"
 format = "[](fg:overlay)[$symbol$environment]($style)[](fg:overlay) "
 disabled = false
 symbol = '🅒 '
-
-[os.symbols]
-Windows = "󰍲"
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = ""
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
-Arch = "󰣇"
-Artix = "󰣇"
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
-Garuda = ""
