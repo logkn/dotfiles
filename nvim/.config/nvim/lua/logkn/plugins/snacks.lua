@@ -1,4 +1,4 @@
-local pokemon = 'gyarados'
+local pokemon = 'snorlax'
 
 return {
   'folke/snacks.nvim',

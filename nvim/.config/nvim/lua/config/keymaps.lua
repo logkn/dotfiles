@@ -37,3 +37,7 @@ keymap.set('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<cr>')
 keymap.set('n', '<leader>n', ':bn<cr>')
 keymap.set('n', '<leader>p', ':bp<cr>')
 keymap.set('n', '<leader>x', ':bd<cr>')
+
+-- diagnostics navigation
+keymap.set('n', 'g]', vim.diagnostic.goto_next, { desc = '[G]o to next diagnostic' })
+keymap.set('n', 'g[', vim.diagnostic.goto_prev, { desc = '[G]o to prev diagnostic' })
