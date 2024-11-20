@@ -20,6 +20,9 @@
 #                        (UU)'(set_color normal)
 # end
 
+function fish_greeting
+end
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
@@ -29,7 +32,9 @@ fish_add_path -m ~/.local/bin
 set VIRTUAL_ENV_DISABLE_PROMPT "1"
 set -xU MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -xU MANROFFOPT "-c"
-set -x SHELL /usr/bin/fish
+
+# set the default shell based on the OS
+set -xU SHELL "(which fish)"
 
 ## Export variable need for qt-theme
 # if type "qtile" >> /dev/null 2>&1
