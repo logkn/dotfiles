@@ -1,7 +1,13 @@
+local pokemon = 'gyarados'
+
 return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
+  dependencies = {
+    'echasnovski/mini.icons',
+    'nvim-tree/nvim-web-devicons',
+  },
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
@@ -13,7 +19,7 @@ return {
         { section = 'startup' },
         {
           section = 'terminal',
-          cmd = 'pokemon-colorscripts -n charizard | tail -n +2; sleep .1',
+          cmd = string.format('pokemon-colorscripts -n %s | tail -n +2; sleep .1', pokemon),
           random = 10,
           pane = 2,
           indent = 4,
