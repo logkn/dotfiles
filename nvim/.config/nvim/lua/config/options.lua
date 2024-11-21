@@ -6,7 +6,7 @@ o.number = true
 o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-o.mouse = 'a'
+o.mouse = "a"
 
 -- Enable text wrapping
 o.wrap = true
@@ -19,11 +19,16 @@ o.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  o.clipboard = 'unnamedplus'
+  o.clipboard = "unnamedplus"
 end)
 
 -- Enable break indent
 o.breakindent = true
+
+o.tabstop = 4
+o.softtabstop = 4
+o.shiftwidth = 4
+o.expandtab = true
 
 -- Save undo history
 o.undofile = true
@@ -33,10 +38,10 @@ o.ignorecase = true
 o.smartcase = true
 
 -- Keep signcolumn on by default
-o.signcolumn = 'yes'
+o.signcolumn = "yes"
 
 -- Decrease update time
-o.updatetime = 250
+o.updatetime = 50
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
@@ -50,10 +55,10 @@ o.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 o.list = true
-o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-o.inccommand = 'split'
+o.inccommand = "split"
 
 -- Show which line your cursor is on
 o.cursorline = true
@@ -62,5 +67,5 @@ o.cursorline = true
 o.scrolloff = 10
 
 -- bufferline
--- o.termguicolors = true --bufferline
+o.termguicolors = true --bufferline
 -- require('logkn.plugins.bufferline').setup{}

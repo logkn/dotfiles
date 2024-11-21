@@ -5,10 +5,9 @@ local colors = {
     colorscheme_name = "rose-pine-moon",
     opts = {
       styles = {
-        bold = true,
-        italic = true,
-        transparency = false,
+        italic = false,
       },
+      disable_background = true,
       groups = {},
       dim_inactive_windows = false,
       extend_background_behind_borders = true,
@@ -53,6 +52,7 @@ local function load_color(color)
   }
 end
 
-local current_color = colors.kanagawa
+-- local current_color = colors.rose_pine
+local current_color = colors.rose_pine
 
 return load_color(current_color)

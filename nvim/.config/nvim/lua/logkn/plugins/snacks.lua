@@ -1,12 +1,12 @@
-local pokemon = 'snorlax'
+local pokemon = "snorlax"
 
 return {
-  'folke/snacks.nvim',
+  "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
   dependencies = {
-    'echasnovski/mini.icons',
-    'nvim-tree/nvim-web-devicons',
+    "echasnovski/mini.icons",
+    "nvim-tree/nvim-web-devicons",
   },
   ---@type snacks.Config
   opts = {
@@ -14,12 +14,12 @@ return {
     dashboard = {
       enabled = true,
       sections = {
-        { section = 'header' },
-        { section = 'keys', gap = 1, padding = 1 },
-        { section = 'startup' },
+        { section = "header" },
+        { section = "keys", gap = 1, padding = 1 },
+        { section = "startup" },
         {
-          section = 'terminal',
-          cmd = string.format('pokemon-colorscripts -n %s | tail -n +2; sleep .1', pokemon),
+          section = "terminal",
+          cmd = string.format("pokemon-colorscripts -n %s | tail -n +2; sleep .1", pokemon),
           random = 10,
           pane = 2,
           indent = 4,
@@ -42,113 +42,113 @@ return {
   },
   keys = {
     {
-      '<leader>un',
+      "<leader>un",
       function()
         Snacks.notifier.hide()
       end,
-      desc = 'Dismiss All Notifications',
+      desc = "Dismiss All Notifications",
     },
     {
-      '<leader>bd',
+      "<leader>bd",
       function()
         Snacks.bufdelete()
       end,
-      desc = 'Delete Buffer',
+      desc = "Delete Buffer",
     },
     {
-      '<leader>gg',
+      "<leader>gg",
       function()
         Snacks.lazygit()
       end,
-      desc = 'Lazygit',
+      desc = "Lazygit",
     },
     {
-      '<leader>gb',
+      "<leader>gb",
       function()
         Snacks.git.blame_line()
       end,
-      desc = 'Git Blame Line',
+      desc = "Git Blame Line",
     },
     {
-      '<leader>gB',
+      "<leader>gB",
       function()
         Snacks.gitbrowse()
       end,
-      desc = 'Git Browse',
+      desc = "Git Browse",
     },
     {
-      '<leader>gf',
+      "<leader>gf",
       function()
         Snacks.lazygit.log_file()
       end,
-      desc = 'Lazygit Current File History',
+      desc = "Lazygit Current File History",
     },
     {
-      '<leader>gl',
+      "<leader>gl",
       function()
         Snacks.lazygit.log()
       end,
-      desc = 'Lazygit Log (cwd)',
+      desc = "Lazygit Log (cwd)",
     },
     {
-      '<leader>cR',
+      "<leader>cR",
       function()
         Snacks.rename.rename_file()
       end,
-      desc = 'Rename File',
+      desc = "Rename File",
     },
     {
-      '<c-/>',
+      "<c-/>",
       function()
         Snacks.terminal()
       end,
-      desc = 'Toggle Terminal',
+      desc = "Toggle Terminal",
     },
     {
-      '<c-_>',
+      "<c-_>",
       function()
         Snacks.terminal()
       end,
-      desc = 'which_key_ignore',
+      desc = "which_key_ignore",
     },
     {
-      ']]',
+      "]]",
       function()
         Snacks.words.jump(vim.v.count1)
       end,
-      desc = 'Next Reference',
-      mode = { 'n', 't' },
+      desc = "Next Reference",
+      mode = { "n", "t" },
     },
     {
-      '[[',
+      "[[",
       function()
         Snacks.words.jump(-vim.v.count1)
       end,
-      desc = 'Prev Reference',
-      mode = { 'n', 't' },
+      desc = "Prev Reference",
+      mode = { "n", "t" },
     },
     {
-      '<leader>N',
-      desc = 'Neovim News',
+      "<leader>N",
+      desc = "Neovim News",
       function()
-        Snacks.win {
-          file = vim.api.nvim_get_runtime_file('doc/news.txt', false)[1],
+        Snacks.win({
+          file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
           width = 0.6,
           height = 0.6,
           wo = {
             spell = false,
             wrap = false,
-            signcolumn = 'yes',
-            statuscolumn = ' ',
+            signcolumn = "yes",
+            statuscolumn = " ",
             conceallevel = 3,
           },
-        }
+        })
       end,
     },
   },
   init = function()
-    vim.api.nvim_create_autocmd('User', {
-      pattern = 'VeryLazy',
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "VeryLazy",
       callback = function()
         -- Setup some globals for debugging (lazy-loaded)
         _G.dd = function(...)
@@ -160,15 +160,17 @@ return {
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
         -- Create some toggle mappings
-        Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>us'
-        Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>uw'
-        Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>uL'
-        Snacks.toggle.diagnostics():map '<leader>ud'
-        Snacks.toggle.line_number():map '<leader>ul'
-        Snacks.toggle.option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map '<leader>uc'
-        Snacks.toggle.treesitter():map '<leader>uT'
-        Snacks.toggle.option('background', { off = 'light', on = 'dark', name = 'Dark Background' }):map '<leader>ub'
-        Snacks.toggle.inlay_hints():map '<leader>uh'
+        Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+        Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+        Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+        Snacks.toggle.diagnostics():map("<leader>ud")
+        Snacks.toggle.line_number():map("<leader>ul")
+        Snacks.toggle
+          .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+          :map("<leader>uc")
+        Snacks.toggle.treesitter():map("<leader>uT")
+        -- Snacks.toggle.option('background', { off = 'light', on = 'dark', name = 'Dark Background' }):map '<leader>ub'
+        Snacks.toggle.inlay_hints():map("<leader>uh")
       end,
     })
   end,
