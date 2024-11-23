@@ -31,6 +31,7 @@ return {
       enabled = true,
       timeout = 3000,
     },
+    gitbrowse = { enabled = true },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
