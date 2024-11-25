@@ -1,4 +1,4 @@
-## Set values
+## Set valuescolor
 # Hide welcome message & ensure we are reporting fish as shell
 
 # fish greeting (look lika fish)
@@ -19,6 +19,9 @@
 #                       (J'(set_color FF7F00)'JJ'(set_color F00)'| \UUU)
 #                        (UU)'(set_color normal)
 # end
+
+# Setup theme (themes/kanagawa.fish)
+source ~/.config/fish/themes/kanagawa.fish
 
 function fish_greeting
 end

@@ -5,6 +5,9 @@ local o = vim.opt
 o.number = true
 o.relativenumber = true
 
+-- True colors
+o.termguicolors = true
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 o.mouse = "a"
 
@@ -65,7 +68,3 @@ o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 o.scrolloff = 10
-
--- bufferline
-o.termguicolors = true --bufferline
--- require('logkn.plugins.bufferline').setup{}
