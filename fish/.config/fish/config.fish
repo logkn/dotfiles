@@ -69,6 +69,13 @@ if test -d ~/Applications/depot_tools
     end
 end
 
+# Add homebrew to PATH
+if test -d /opt/homebrew/bin
+    if not contains -- /opt/homebrew/bin $PATH
+        set -p PATH /opt/homebrew/bin
+    end
+end
+
 
 ## Starship prompt
 # if status --is-interactive
@@ -140,11 +147,11 @@ end
 ## Useful aliases
 
 # Replace ls with eza
-alias ls 'eza -al --color=always --group-directories-first --icons' # preferred listing
-alias la 'eza -a --color=always --group-directories-first --icons'  # all files and dirs
-alias ll 'eza -l --color=always --group-directories-first --icons'  # long format
-alias lt 'eza -aT --color=always --group-directories-first --icons' # tree listing
-alias l. 'eza -ald --color=always --group-directories-first --icons .*' # show only dotfiles
+# alias ls 'eza -al --color=always --group-directories-first --icons' # preferred listing
+# alias la 'eza -a --color=always --group-directories-first --icons'  # all files and dirs
+# alias ll 'eza -l --color=always --group-directories-first --icons'  # long format
+# alias lt 'eza -aT --color=always --group-directories-first --icons' # tree listing
+# alias l. 'eza -ald --color=always --group-directories-first --icons .*' # show only dotfiles
 
 # Replace some more things with better alternatives
 alias cat 'bat --style header --style snip --style changes --style header'
@@ -183,14 +190,6 @@ alias mirror 'sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias mirrora 'sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist'
 alias mirrord 'sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist'
 alias mirrors 'sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist'
-
-# Help people new to Arch
-alias apt 'man pacman'
-alias apt-get 'man pacman'
-alias please 'sudo'
-alias tb 'nc termbin.com 9999'
-alias helpme 'echo "To print basic information about a command use tldr <command>"'
-alias pacdiff 'sudo -H DIFFPROG=meld pacdiff'
 
 # Get the error messages from journalctl
 alias jctl 'journalctl -p 3 -xb'
