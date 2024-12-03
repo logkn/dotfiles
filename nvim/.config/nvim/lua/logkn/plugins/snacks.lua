@@ -1,4 +1,4 @@
-local pokemon = "snorlax"
+local pokemon = "ho-oh"
 
 return {
   "folke/snacks.nvim",
@@ -19,7 +19,7 @@ return {
         { section = "startup" },
         {
           section = "terminal",
-          cmd = string.format("pokemon-colorscripts -n %s | tail -n +2; sleep .1", pokemon),
+          cmd = string.format("pokemon-colorscripts --no-title -n %s; sleep .1", pokemon),
           random = 10,
           pane = 2,
           indent = 4,
