@@ -13,7 +13,7 @@ o.mouse = "a"
 
 -- Enable text wrapping
 o.wrap = true
-o.textwidth = 88
+-- o.textwidth = 88
 
 -- Don't show the mode, since it's already in the status line
 o.showmode = false
