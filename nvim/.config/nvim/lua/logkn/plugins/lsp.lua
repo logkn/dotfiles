@@ -31,6 +31,8 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      require("lspconfig").lua_ls.setup({ capabilities = capabilities })
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
