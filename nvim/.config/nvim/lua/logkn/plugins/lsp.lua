@@ -32,8 +32,8 @@ return {
     },
     config = function()
       -- Blink:
-      -- local capabilities = require("blink.cmp").get_lsp_capabilities()
-      -- require("lspconfig").lua_ls.setup({ capabilities = capabilities })
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      require("lspconfig").lua_ls.setup({ capabilities = capabilities })
 
       -- Brief aside: **What is LSP?**
       --
