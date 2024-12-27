@@ -1,0 +1,27 @@
+theme = gruvbox-material
+font-family = FiraCode Nerd Font Mono
+
+background-opacity = 0.7
+background-blur-radius = 25
+
+
+keybind = ctrl+ =ignore
+
+keybind = ctrl+ >c=new_tab
+keybind = ctrl+ >n=next_tab
+keybind = ctrl+ >p=previous_tab
+keybind = global:cmd+enter=toggle_quick_terminal
+keybind = ctrl+ >x=close_surface
+
+keybind = ctrl+ >ctrl+j=new_split:down
+keybind = ctrl+ >ctrl+k=new_split:up
+keybind = ctrl+ >ctrl+h=new_split:left
+keybind = ctrl+ >ctrl+l=new_split:right
+
+
+keybind = ctrl+ >j=goto_split:bottom
+keybind = ctrl+ >k=goto_split:top
+keybind = ctrl+ >h=goto_split:left
+keybind = ctrl+ >l=goto_split:right
+
+keybind = global:alt+enter=new_window
