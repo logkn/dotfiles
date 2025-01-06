@@ -43,4 +43,5 @@ return {
       ft = { "markdown", "Avante" },
     },
   },
+  hints = { enabled = false },
 }

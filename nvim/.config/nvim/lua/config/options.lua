@@ -1,3 +1,11 @@
+-- LazyVim
+local g = vim.g
+
+g.snacks_animate = false
+g.lazyvim_picker = "fzf"
+g.lazyvim_cmp = "blink.cmp"
+g.ai_cmp = true
+
 -- OPTIONS
 local o = vim.opt
 
