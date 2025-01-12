@@ -19,14 +19,15 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:color_blue bg:color_purple)\
+[](fg:color_blue bg:color_bg3)\
+$docker_context\
 $conda\
-[](fg:color_purple bg:color_green)\
+[](fg:color_bg3 bg:color_bg1)\
 $time\
-[ ](fg:color_green)\
+[ ](fg:color_bg1)\
 $line_break$character"""
 
-palette = 'kanagawa'
+palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
 color_fg0 = '#fbf1c7'
@@ -40,27 +41,9 @@ color_purple = '#b16286'
 color_red = '#cc241d'
 color_yellow = '#d79921'
 
-[palettes.kanagawa]
-# Base colors
-color_fg0 = '#dcd7ba'    # fujiWhite - for text
-color_bg1 = '#1f1f28'    # sumiInk0 - darkest bg
-color_bg3 = '#363646'    # sumiInk3 - medium bg
-
-# Accent colors with adjusted contrast
-color_blue = '#7e9cd8'   # crystalBlue - brightened for better contrast
-color_aqua = '#6a9589'   # waveAqua1 - darkened for git info
-color_green = '#98bb6c'  # springGreen - kept as is for success
-color_orange = '#ffa066' # surimiOrange - kept for username/os
-color_purple = '#957fb8' # oniViolet - for vim replace mode
-color_red = '#ff5d62'    # peachRed - for errors
-color_yellow = '#dca561' # autumnYellow - changed for better directory contrast
-
-# Optional if you want to customize the Docker/Conda section
-color_gray = '#727169'   # fujiGray - for docker/conda bg
-
 [os]
 disabled = false
-style = "bg:color_orange fg:color_bg1"
+style = "bg:color_orange fg:color_fg0"
 
 [os.symbols]
 Windows = "󰍲"
@@ -88,12 +71,12 @@ Garuda = ""
 
 [username]
 show_always = true
-style_user = "bg:color_orange fg:color_bg1"
-style_root = "bg:color_orange fg:color_bg1"
+style_user = "bg:color_orange fg:color_fg0"
+style_root = "bg:color_orange fg:color_fg0"
 format = '[ $user ]($style)'
 
 [directory]
-style = "fg:color_bg1 bg:color_yellow"
+style = "fg:color_fg0 bg:color_yellow"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -108,56 +91,56 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "bg:color_aqua"
-format = '[[ $symbol $branch ](fg:color_bg1 bg:color_aqua)]($style)'
+format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
 
 [git_status]
 style = "bg:color_aqua"
-format = '[[($all_status$ahead_behind )](fg:color_bg1 bg:color_aqua)]($style)'
+format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
 
 [nodejs]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_bg1 bg:color_blue)]($style)'
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [c]
 symbol = " "
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_bg1 bg:color_blue)]($style)'
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [rust]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_bg1 bg:color_blue)]($style)'
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [golang]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_bg1 bg:color_blue)]($style)'
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [php]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_bg1 bg:color_blue)]($style)'
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [java]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_bg1 bg:color_blue)]($style)'
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [kotlin]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_bg1 bg:color_blue)]($style)'
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [haskell]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_bg1 bg:color_blue)]($style)'
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [python]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_bg1 bg:color_blue)]($style)'
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [docker_context]
 symbol = ""
@@ -172,7 +155,7 @@ format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
 disabled = false
 time_format = "%R"
 style = "bg:color_bg1"
-format = '[[  $time ](fg:color_bg1 bg:color_green)]($style)'
+format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
 
 [line_break]
 disabled = false
