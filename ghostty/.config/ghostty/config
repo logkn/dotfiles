@@ -14,10 +14,10 @@ keybind = ctrl+ >p=previous_tab
 keybind = global:cmd+enter=toggle_quick_terminal
 keybind = ctrl+ >x=close_surface
 
-keybind = ctrl+ >ctrl+j=new_split:down
-keybind = ctrl+ >ctrl+k=new_split:up
-keybind = ctrl+ >ctrl+h=new_split:left
-keybind = ctrl+ >ctrl+l=new_split:right
+keybind = ctrl+ >shift+j=new_split:down
+keybind = ctrl+ >shift+k=new_split:up
+keybind = ctrl+ >shift+h=new_split:left
+keybind = ctrl+ >shift+l=new_split:right
 
 
 keybind = ctrl+ >j=goto_split:bottom
