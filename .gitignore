@@ -1,4 +1,11 @@
 # remove any zed files that start with .tmp
 zed/.config/zed/.tmp*
+
+# remove fish_variables, which might have API keys
 fish/.config/fish/fish_variables
+
+# remove all aider files
 .aider*
+
+# remove all .DS_Store files
+.DS_Store
