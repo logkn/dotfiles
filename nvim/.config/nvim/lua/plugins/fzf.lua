@@ -11,7 +11,6 @@ return {
     { "<leader>sd", "<cmd>FzfLua diagnostics<cr>", desc = "[S]earch [D]iagnostics" },
     { "<leader>sg", "<cmd>FzfLua live_grep<cr>", desc = "[S]earch by [G]rep" },
     { "<leader>sw", "<cmd>FzfLua grep_cword<cr>", desc = "[S]earch current [W]ord" },
-    { "<leader>sr", "<cmd>FzfLua resume<cr>", desc = "[S]earch [R]esume last" },
     { "<leader>s.", "<cmd>FzfLua oldfiles<cr>", desc = '[S]earch Recent Files ("." for repeat)' },
     { "<leader><leader>", "<cmd>FzfLua buffers<cr>", desc = "[ ] Find existing buffers" },
   },

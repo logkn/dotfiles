@@ -1,6 +1,7 @@
 return {
-  'stevearc/oil.nvim',
-  enabled = false,
+  "stevearc/oil.nvim",
+  -- Optional dependencies
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     view_options = {
       -- Show files and directories that start with "."
@@ -16,7 +17,14 @@ return {
         winblend = 0,
       },
     },
+    columns = { "icon" },
+    keymaps = {
+      ["<C-h>"] = false,
+      ["<M-h>"] = "actions.select_split",
+    },
   },
-  -- Optional dependencies
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  keys = {
+    { "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
+    -- { "<leader>-", require("oil").toggle_float },
+  },
 }

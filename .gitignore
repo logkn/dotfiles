@@ -1,3 +1,4 @@
 # remove any zed files that start with .tmp
 zed/.config/zed/.tmp*
 fish/.config/fish/fish_variables
+.aider*
