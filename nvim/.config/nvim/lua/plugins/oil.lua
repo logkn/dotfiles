@@ -3,6 +3,7 @@ return {
   -- Optional dependencies
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
+    default_file_explorer = false,
     view_options = {
       -- Show files and directories that start with "."
       show_hidden = true,
