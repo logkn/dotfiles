@@ -5,19 +5,23 @@ return {
   requires = {
     "nvim-tree/nvim-web-devicons",
   },
-  config = function()
-    require("nvim-tree").setup({
-      filters = {
-        dotfiles = false,
-        custom = {},
-        exclude = {},
-      },
-      git = {
-        ignore = false,
-      },
-    })
+  opts = {
 
-    vim.api.nvim_set_hl(0, "NvimTreeNormal", { guibg = NONE, ctermbg = NONE })
-    vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { guibg = NONE, ctermbg = NONE })
+    filters = {
+      dotfiles = false,
+      custom = {
+        "*lock.json",
+      },
+      exclude = {},
+    },
+    git = {
+      ignore = false,
+    },
+  },
+  config = function(_, opts)
+    require("nvim-tree").setup(opts)
+
+    vim.api.nvim_set_hl(0, "NvimTreeNormal", { guibg = nil, ctermbg = nil })
+    vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { guibg = nil, ctermbg = nil })
   end,
 }

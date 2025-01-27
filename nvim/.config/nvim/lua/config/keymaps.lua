@@ -34,9 +34,9 @@ keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window"
 keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>")
 
 -- buffer navigation
-keymap.set("n", "<leader>n", ":bn<cr>")
-keymap.set("n", "<leader>p", ":bp<cr>")
-keymap.set("n", "<leader>x", ":bd<cr>")
+keymap.set("n", "<leader>n", "<cmd>bn<cr>")
+keymap.set("n", "<leader>p", "<cmd>bp<cr>")
+keymap.set("n", "<leader>x", "<cmd>bd<cr>")
 
 -- diagnostics navigation
 keymap.set("n", "g]", vim.diagnostic.goto_next, { desc = "[G]o to next diagnostic" })
