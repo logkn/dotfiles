@@ -1,6 +1,7 @@
 return {
   "ibhagwan/fzf-lua",
   -- optional for icon support
+  enabled = false,
   dependencies = { "nvim-tree/nvim-web-devicons" },
   event = "VimEnter",
   opts = {},

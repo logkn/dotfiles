@@ -8,6 +8,113 @@ return {
     "echasnovski/mini.icons",
     "nvim-tree/nvim-web-devicons",
   },
+
+  keys = {
+    {
+      "<leader>z",
+      function()
+        Snacks.zen()
+      end,
+      desc = "Toggle [Z]en Mode",
+    },
+    {
+      "<leader>un",
+      function()
+        Snacks.notifier.hide()
+      end,
+      desc = "Dismiss All Notifications",
+    },
+    {
+      "<leader>bd",
+      function()
+        Snacks.bufdelete()
+      end,
+      desc = "Delete Buffer",
+    },
+    -- Git
+    {
+      "<leader>gb",
+      function()
+        Snacks.git.blame_line()
+      end,
+      desc = "Git Blame Line",
+    },
+    {
+      "<leader>gB",
+      function()
+        Snacks.gitbrowse()
+      end,
+      desc = "Git Browse",
+    },
+    {
+      "<leader>gf",
+      function()
+        Snacks.lazygit.log_file()
+      end,
+      desc = "Lazygit Current File History",
+    },
+    {
+      "<leader>gl",
+      function()
+        Snacks.lazygit.log()
+      end,
+      desc = "Lazygit Log (cwd)",
+    },
+    -- File interaction
+    {
+      "<leader>rf",
+      function()
+        Snacks.rename.rename_file()
+      end,
+      desc = "[R]ename [F]ile",
+    },
+    -- Terminal
+    {
+      "<c-/>",
+      function()
+        Snacks.terminal()
+      end,
+      desc = "Toggle Terminal",
+    },
+    {
+      "<c-_>",
+      function()
+        Snacks.terminal()
+      end,
+      desc = "which_key_ignore",
+    },
+    -- Words
+    {
+      "]]",
+      function()
+        Snacks.words.jump(vim.v.count1)
+      end,
+      desc = "Next Reference",
+      mode = { "n", "t" },
+    },
+    {
+      "[[",
+      function()
+        Snacks.words.jump(-vim.v.count1)
+      end,
+      desc = "Prev Reference",
+      mode = { "n", "t" },
+    },
+    -- Picker
+    {
+      "<leader>sf",
+      function()
+        Snacks.picker.files({
+          finder = "files",
+          format = "file",
+          show_empty = true,
+          supports_live = true,
+        })
+      end,
+      desc = "[S]earch Files",
+    },
+  },
+
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
@@ -40,93 +147,25 @@ return {
         wo = { wrap = true }, -- Wrap notifications
       },
     },
-  },
-  keys = {
-    {
-      "<leader>z",
-      function()
-        Snacks.zen()
-      end,
-      desc = "Toggle [Z]en Mode",
-    },
-    {
-      "<leader>un",
-      function()
-        Snacks.notifier.hide()
-      end,
-      desc = "Dismiss All Notifications",
-    },
-    {
-      "<leader>bd",
-      function()
-        Snacks.bufdelete()
-      end,
-      desc = "Delete Buffer",
-    },
-    {
-      "<leader>gb",
-      function()
-        Snacks.git.blame_line()
-      end,
-      desc = "Git Blame Line",
-    },
-    {
-      "<leader>gB",
-      function()
-        Snacks.gitbrowse()
-      end,
-      desc = "Git Browse",
-    },
-    {
-      "<leader>gf",
-      function()
-        Snacks.lazygit.log_file()
-      end,
-      desc = "Lazygit Current File History",
-    },
-    {
-      "<leader>gl",
-      function()
-        Snacks.lazygit.log()
-      end,
-      desc = "Lazygit Log (cwd)",
-    },
-    {
-      "<leader>rf",
-      function()
-        Snacks.rename.rename_file()
-      end,
-      desc = "[R]ename [F]ile",
-    },
-    {
-      "<c-/>",
-      function()
-        Snacks.terminal()
-      end,
-      desc = "Toggle Terminal",
-    },
-    {
-      "<c-_>",
-      function()
-        Snacks.terminal()
-      end,
-      desc = "which_key_ignore",
-    },
-    {
-      "]]",
-      function()
-        Snacks.words.jump(vim.v.count1)
-      end,
-      desc = "Next Reference",
-      mode = { "n", "t" },
-    },
-    {
-      "[[",
-      function()
-        Snacks.words.jump(-vim.v.count1)
-      end,
-      desc = "Prev Reference",
-      mode = { "n", "t" },
+    picker = {
+      matcher = {
+        frecency = true,
+      },
+      win = {
+        input = {
+          keys = {
+            -- to close the picker on ESC instead of going to normal mode,
+            -- add the following keymap to your config
+            ["<Esc>"] = { "close", mode = { "n", "i" } },
+            -- I'm used to scrolling like this in LazyGit
+            ["J"] = { "preview_scroll_down", mode = { "i", "n" } },
+            ["K"] = { "preview_scroll_up", mode = { "i", "n" } },
+            ["H"] = { "preview_scroll_left", mode = { "i", "n" } },
+            ["L"] = { "preview_scroll_right", mode = { "i", "n" } },
+          },
+        },
+      },
+      ui_select = true,
     },
   },
   init = function()
