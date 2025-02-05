@@ -23,12 +23,14 @@ keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
 keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
 keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 
--- Keybinds to make split navigation easier.
+-- Keybinds to make navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- Zoom in on the current window
+keymap.set("n", "<leader>wf", "<C-w>o", { desc = "[W]indow [F]ullscreen" })
 
 -- <leader>e for nvim-tree
 keymap.set("n", "<leader>e", "<cmd>NvimTreeFindFileToggle<cr>")
