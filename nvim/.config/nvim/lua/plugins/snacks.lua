@@ -114,45 +114,24 @@ return {
       desc = "[S]earch Files",
     },
     {
+      "<leader>sg",
+      function()
+        Snacks.picker.grep({
+          live = false,
+          show_empty = true,
+          regex = false,
+          need_search = false,
+        })
+      end,
+      desc = "[S]earch [G]rep",
+    },
+    {
       "<leader>ga",
       function()
         Snacks.picker.grep_word()
       end,
-      "Visual selection or word",
+      desc = "Visual selection or word",
       mode = { "n", "x" },
-    },
-    {
-      "<leader>sg",
-      function()
-        Snacks.picker.grep({
-          finder = "grep",
-          format = "file",
-          show_empty = true,
-          supports_live = true,
-        })
-      end,
-      desc = "Grep",
-    },
-    {
-      "<leader>ss",
-      function()
-        Snacks.picker.lsp_symbols()
-      end,
-      desc = "LSP Symbols",
-    },
-    {
-      "<leader>sS",
-      function()
-        Snacks.picker.lsp_workspace_symbols()
-      end,
-      desc = "LSP Workspace Symbols",
-    },
-    {
-      "<leader>sk",
-      function()
-        Snacks.picker.keymaps()
-      end,
-      desc = "Keymaps",
     },
     {
       "<leader>sb",
@@ -202,6 +181,7 @@ return {
         smartcase = true,
         ignorecase = true,
         history_bonus = true,
+        show_empty = true,
       },
       win = {
         input = {
