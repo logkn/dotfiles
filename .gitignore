@@ -11,4 +11,4 @@ fish/.config/fish/fish_variables
 .DS_Store
 
 # specific fish functions
-**/llmprov-upgrade.fish
+**/llmprov-update.fish
