@@ -9,3 +9,6 @@ fish/.config/fish/fish_variables
 
 # remove all .DS_Store files
 .DS_Store
+
+# specific fish functions
+**/llmprov-upgrade.fish
