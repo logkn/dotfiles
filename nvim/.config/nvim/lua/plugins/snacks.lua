@@ -145,22 +145,6 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
-    dashboard = {
-      enabled = true,
-      sections = {
-        { section = "header" },
-        { section = "keys", gap = 1, padding = 1 },
-        { section = "startup" },
-        {
-          section = "terminal",
-          cmd = string.format("pokemon-colorscripts --no-title -n %s; sleep .1", pokemon),
-          random = 10,
-          pane = 2,
-          indent = 4,
-          height = 30,
-        },
-      },
-    },
     notifier = {
       enabled = true,
       timeout = 3000,
