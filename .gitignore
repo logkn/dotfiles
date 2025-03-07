@@ -12,3 +12,7 @@ fish/.config/fish/fish_variables
 
 # specific fish functions
 **/llmprov-update.fish
+
+# neovim lockfile 
+# (versions can manage this on their own, sometimes causes conflicts)
+**/lazy-lock.json
