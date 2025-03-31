@@ -3,7 +3,7 @@ font-family = FiraCode Nerd Font Mono
 mouse-hide-while-typing = true
 
 background-opacity = 0.7
-background-blur-radius = 25
+background-blur = true
 background = #32302F
 
 keybind = ctrl+ =ignore
