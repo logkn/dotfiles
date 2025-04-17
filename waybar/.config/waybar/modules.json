@@ -1,0 +1,61 @@
+{
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        }
+    },
+    "custom/launcher": {
+        "format": "󰣇",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/launchers/type-3/launcher.sh",
+        "on-click-right": "pkill rofi"
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "tooltip": false,
+        "icon": true
+    },
+    "mpris": {
+        "format": "{player_icon} {artist} - {title}",
+        "player-icons": {
+            "spotify": "",
+            "default": ""
+        },
+        "on-click": "playerctl play-pause"
+    },
+    "pulseaudio": {
+        "format": " {volume}%",
+        "format-muted": " {volume}%",
+        "scroll-step": 5,
+        "on-click": "pavucontrol"
+    },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ipaddr}",
+        "format-disconnected": "⚠"
+    },
+    "custom/weather": {
+        "exec": "curl -s 'wttr.in/?format=1'",
+        "interval": 600
+    },
+    "cpu": {
+        "format": "CPU {usage}%",
+        "tooltip": true
+    },
+    "custom/gpu": {
+        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{print \"GPU \" $1 \"%\"}'",
+        "interval": 10
+    },
+    "clock": {
+        "format": "{:%I:%M %p | %e %B} ",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    }
+}

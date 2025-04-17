@@ -1,3 +1,4 @@
+/* ================== All Elements ================== */
 * {
   font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
   font-size: 14px;
@@ -5,11 +6,22 @@
   padding: 0 8px;
 }
 
-window#waybar {
-  background-color: #1d2021;
+
+/* ================== Bars ================== */
+window#waybar.top {
+  background-color: rgba(29, 32, 33, 1.0);
   color: #ebdbb2;
-  border-bottom: 1px solid #3c3836;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  margin: 20px 20px 20px 20px;
 }
+
+
+window#waybar.bottom {
+  background-color: rgba(29, 32, 33, 0.2);
+  color: #ebdbb2;
+}
+
+/* ================== Modules ================== */
 
 #custom-launcher {
   color: #fabd2f;
@@ -19,8 +31,9 @@ window#waybar {
 
 #workspaces button {
   color: #a89984;
-  padding: 0 8px;
+  padding: 0 0;
   border-radius: 6px;
+  
 }
 
 #workspaces button.active {

@@ -45,7 +45,9 @@ window {
     enabled:                     true;
     border-radius:               15px;
     cursor:                      "default";
-    background-color:            @background;
+    background-color:            transparent;
+    background-image:            rgba(208, 208, 208, 0.8);
+    blur:                        true;
 }
 
 /*****----- Main Box -----*****/

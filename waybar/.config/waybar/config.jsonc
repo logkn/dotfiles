@@ -1,76 +1,39 @@
-{
-    "layer": "top",
-    "position": "top",
-    "height": 32,
-    "modules-left": [
-        "custom/launcher",
-        "hyprland/workspaces"
-    ],
-    "modules-center": [
-        "window"
-    ],
-    "modules-right": [
-        "mpris",
-        "pulseaudio",
-        "network",
-        "custom/weather",
-        "cpu",
-        "custom/gpu",
-        "clock"
-    ],
-    "custom/launcher": {
-        "format": "󰣇",
-        "tooltip": false,
-        "on-click": "wofi --show drun",
-        "on-click-right": "pkill wofi"
-    },
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "on-click": "hyprctl dispatch workspace {id}",
-        "persistent-workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
-        }
-    },
-    "window": {
-        "format": "{}",
-        "max-length": 50,
-        "tooltip": false
-    },
-    "mpris": {
-        "format": "{player_icon} {artist} - {title}",
-        "player-icons": {
-            "spotify": "",
-            "default": ""
-        },
-        "on-click": "playerctl play-pause"
-    },
-    "pulseaudio": {
-        "format": " {volume}%",
-        "format-muted": " {volume}%",
-        "scroll-step": 5
-    },
-    "network": {
-        "format-wifi": " {essid}",
-        "format-ethernet": " {ipaddr}",
-        "format-disconnected": "⚠"
-    },
-    "custom/weather": {
-        "exec": "curl -s 'wttr.in/?format=1'",
-        "interval": 600
-    },
-    "cpu": {
-        "format": " {usage}%",
-        "tooltip": true
-    },
-    "custom/gpu": {
-        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{print \"GPU: \" $1 \"%\"}'",
-        "interval": 10
-    },
-    "clock": {
-        "format": "{:%a %b %d  %I:%M %p}"
+[
+    {
+        "layer": "top",
+        "name": "top",
+        "position": "top",
+        "height": 32,
+        "modules-left": [
+            "custom/launcher",
+            "hyprland/workspaces",
+            "hyprland/window"
+        ],
+        "modules-center": [
+            "clock",
+            "mpris"
+        ],
+        "modules-right": [
+            "pulseaudio",
+            "network",
+            "custom/weather",
+            "cpu",
+            "custom/gpu"
+        ],
+        "include": [
+            "~/.config/waybar/modules.json"
+        ]
     }
-}
+    // {
+    //     "layer": "top",
+    //     "name": "bottom",
+    //     "position": "left",
+    //     "height": 32,
+    //     "modules-center": [
+    //         "hyprland/workspaces"
+    //     ],
+    //     "include": [
+    //         "~/.config/waybar/modules.json"
+    //     ]
+    // }
+]
