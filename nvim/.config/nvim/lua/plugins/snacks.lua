@@ -9,6 +9,7 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
 
+  ---@module "Snacks"
   keys = {
     {
       "<leader>z",

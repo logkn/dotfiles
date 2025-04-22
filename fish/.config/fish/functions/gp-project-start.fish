@@ -3,7 +3,6 @@
 #
 # end
 
-
-function gp-project-start --wraps='source .venv/bin/activate.fish && export PYTHONPATH=. && configure_ca && poetry install' --description "Start up a G-P project."
-    source .venv/bin/activate.fish && export PYTHONPATH=. && configure_ca && poetry install $argv
+function gp-project-start --wraps='source .venv/bin/activate.fish && export PYTHONPATH=. && configure_ca && poetry sync' --description "Start up a G-P project."
+    source .venv/bin/activate.fish && export PYTHONPATH=. && configure_ca && poetry sync $argv
 end
