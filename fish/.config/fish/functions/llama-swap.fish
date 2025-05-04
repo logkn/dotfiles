@@ -20,5 +20,4 @@ function llama-swap --wraps=./run/media/logan/storage/Development/OpenSource/lla
     end
 
     /run/media/logan/storage/Development/OpenSource/llama-swap/build/llama-swap-linux-amd64 $args $config_flag $config_path
-
 end
