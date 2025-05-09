@@ -173,11 +173,6 @@ alias jctl 'journalctl -p 3 -xb'
 # Recent installed packages
 alias rip 'expac --timefmt="%Y-%m-%d %T" "%l\t%n %v" | sort | tail -200 | nl'
 
-# ## Run fastfetch if session is interactive
-# if status --is-interactive && type -q fastfetch
-#    fastfetch --config neofetch.jsonc
-# end
-
 # zoxide
 zoxide init fish | source
 
@@ -185,3 +180,18 @@ zoxide init fish | source
 starship init fish | source
 
 pyenv init - | source
+
+# asdf
+# ASDF configuration code
+if test -z $ASDF_DATA_DIR
+    set _asdf_shims "$HOME/.asdf/shims"
+else
+    set _asdf_shims "$ASDF_DATA_DIR/shims"
+end
+
+# Do not use fish_add_path (added in Fish 3.2) because it
+# potentially changes the order of items in PATH
+if not contains $_asdf_shims $PATH
+    set -gx --prepend PATH $_asdf_shims
+end
+set --erase _asdf_shims
