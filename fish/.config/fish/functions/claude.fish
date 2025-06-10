@@ -1,3 +1,3 @@
 function claude
-    ~/.claude/local/claude
+    ~/.claude/local/claude "$argv"
 end
