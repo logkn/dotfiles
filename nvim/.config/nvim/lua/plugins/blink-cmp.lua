@@ -7,7 +7,7 @@ return {
       -- "<C-c>" shows copilot suggestions
       ["<C-c>"] = {
         function(cmp)
-          cmp.show({ providers = { "copilot" } })
+          cmp.show({ providers = { "supermaven" } })
         end,
       },
     },
