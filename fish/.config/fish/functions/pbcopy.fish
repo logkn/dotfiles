@@ -1,4 +1,7 @@
-function pbcopy --wraps='xclip -selection clipboard' --description 'alias pbcopy=xclip -selection clipboard'
-  xclip -selection clipboard $argv
-        
+function pbcopy --description 'Cross-platform clipboard copy'
+    if test (uname) = Darwin
+        command pbcopy $argv
+    else
+        xclip -selection clipboard $argv
+    end
 end
