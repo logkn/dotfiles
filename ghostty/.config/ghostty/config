@@ -29,3 +29,5 @@ keybind = ctrl+ >l=goto_split:right
 keybind = global:alt+enter=new_window
 keybind = ctrl+ >f=toggle_split_zoom
 keybind = shift+enter=text:\n
+
+keybind = super+r=reload_config
