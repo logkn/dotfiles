@@ -1,9 +1,9 @@
--- LazyVim
 local g = vim.g
 
+g.mapleader = ' ' -- change leader to a space
+g.maplocalleader = ' ' -- change localleader to a space
+
 g.snacks_animate = false
-g.lazyvim_picker = "snacks"
-g.lazyvim_cmp = "blink.cmp"
 g.ai_cmp = true
 
 -- OPTIONS
@@ -17,7 +17,7 @@ o.relativenumber = true
 o.termguicolors = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-o.mouse = "a"
+o.mouse = 'a'
 
 -- Enable text wrapping
 o.wrap = true
@@ -31,7 +31,7 @@ o.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  o.clipboard = "unnamedplus"
+  o.clipboard = 'unnamedplus'
 end)
 
 -- Enable break indent
@@ -41,6 +41,8 @@ o.tabstop = 4
 o.softtabstop = 4
 o.shiftwidth = 4
 o.expandtab = true
+o.smarttab = true
+o.autoindent = true
 
 -- Save undo history
 o.undofile = true
@@ -50,7 +52,7 @@ o.ignorecase = true
 o.smartcase = true
 
 -- Keep signcolumn on by default
-o.signcolumn = "yes"
+o.signcolumn = 'yes'
 
 -- Decrease update time
 o.updatetime = 50
@@ -67,10 +69,10 @@ o.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 o.list = true
-o.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+o.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
-o.inccommand = "split"
+o.inccommand = 'split'
 
 -- Show which line your cursor is on
 o.cursorline = true
