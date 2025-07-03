@@ -6,6 +6,9 @@ g.maplocalleader = ' ' -- change localleader to a space
 g.snacks_animate = false
 g.ai_cmp = true
 
+-- LazyVim auto format
+g.autoformat = true
+
 -- OPTIONS
 local o = vim.opt
 

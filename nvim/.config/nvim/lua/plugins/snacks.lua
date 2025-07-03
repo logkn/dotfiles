@@ -183,6 +183,20 @@ return {
       end,
       desc = '[G]oto [R]eferences',
     },
+    {
+      '<leader>.',
+      function()
+        Snacks.scratch()
+      end,
+      desc = 'Toggle Scratch Buffer',
+    },
+    {
+      '<leader>S',
+      function()
+        Snacks.scratch.select()
+      end,
+      desc = 'Select Scratch Buffer',
+    },
   },
 
   ---@type snacks.Config
