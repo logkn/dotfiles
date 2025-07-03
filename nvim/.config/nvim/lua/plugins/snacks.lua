@@ -245,6 +245,9 @@ return {
         },
       },
     },
+    input = {
+      enabled = true,
+    },
     styles = {
       notification = {
         wo = { wrap = true }, -- Wrap notifications
