@@ -206,6 +206,7 @@ return {
       enabled = true,
       timeout = 3000,
     },
+    indent = { enabled = true },
     notify = { enabled = true },
     image = { enabled = true },
     gitbrowse = { enabled = true },

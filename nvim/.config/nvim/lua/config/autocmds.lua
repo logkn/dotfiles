@@ -15,11 +15,29 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Snacks + nvim-tree rename integration
+local prev = { new_name = '', old_name = '' } -- Prevents duplicate events
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'NvimTreeSetup',
+  callback = function()
+    local events = require('nvim-tree.api').events
+    events.subscribe(events.Event.NodeRenamed, function(data)
+      if prev.new_name ~= data.new_name or prev.old_name ~= data.old_name then
+        data = data
+        Snacks.rename.on_rename_file(data.old_name, data.new_name)
+      end
+    end)
+  end,
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
     local map = function(keys, func, desc)
       vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+    end
+    local vmap = function(keys, func, desc)
+      vim.keymap.set('v', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
     end
 
     -- defaults:
@@ -32,6 +50,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- map('gd', vim.lsp.buf.definition, 'Goto Definition')
     map('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
     map('<leader>cr', vim.lsp.buf.rename, 'Rename all references')
+    vmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+    vmap('<leader>cr', vim.lsp.buf.rename, 'Rename all references')
 
     local function client_supports_method(client, method, bufnr)
       if vim.fn.has 'nvim-0.11' == 1 then

@@ -17,6 +17,12 @@ return {
     },
   },
   opts = {
+    default_format_opts = {
+      timeout_ms = 3000,
+      async = false,
+      quiet = false,
+      lsp_format = 'fallback',
+    },
     formatters_by_ft = {
       -- Go
       go = { 'goimports', 'gofmt' },
@@ -44,6 +50,7 @@ return {
       -- Shell
       sh = { 'shfmt' },
       bash = { 'shfmt' },
+      fish = { 'fish_indent' },
 
       -- Other (system tools)
       rust = { 'rustfmt', lsp_format = 'fallback' }, -- comes with Rust installation
@@ -51,9 +58,6 @@ return {
       -- Additional file types (uncomment as needed)
       -- markdown = { "markdownlint" },
       -- yaml = { "yamllint" },
-    },
-    default_format_opts = {
-      lsp_format = 'fallback',
     },
 
     format_on_save = {
