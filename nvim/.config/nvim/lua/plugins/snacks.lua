@@ -4,13 +4,12 @@ return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
-  event = 'VimEnter',
   dependencies = {
     'echasnovski/mini.icons',
     'nvim-tree/nvim-web-devicons',
   },
 
-  ---@module "Snacks"
+  ---@module "snacks"
   keys = {
     {
       '<leader>z',
@@ -200,7 +199,7 @@ return {
     {
       '<leader>e',
       function()
-        Snacks.explorer.toggle()
+        Snacks.explorer.open()
       end,
       desc = 'Toggle [E]xplorer',
     },
@@ -265,19 +264,52 @@ return {
           keys = {
             -- to close the picker on ESC instead of going to normal mode,
             -- add the following keymap to your config
-            ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+            -- ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
           },
         },
       },
       ui_select = true,
       sources = {
-        explorer = {},
+        ---@class snacks.picker.explorer.Config
+        explorer = {
+          actions = {
+            copy_relative_path = {
+              action = function(_, item)
+                if not item then
+                  return
+                end
+
+                local relative_path = vim.fn.fnamemodify(item.file, ':.')
+                vim.fn.setreg('+', relative_path)
+                Snacks.notify.info('Yanked `' .. relative_path .. '`')
+              end,
+            },
+            copy_name = {
+              action = function(_, item)
+                if not item then
+                  return
+                end
+
+                local file_name = vim.fn.fnamemodify(item.file, ':t')
+                vim.fn.setreg('+', file_name)
+                Snacks.notify.info('Yanked `' .. file_name .. '`')
+              end,
+            },
+          },
+          follow_file = true,
+          win = {
+            list = {
+              keys = {
+                ['y'] = { 'copy_name', mode = { 'n', 'x' } },
+                ['Y'] = { 'copy_relative_path', mode = { 'n', 'x' } },
+              },
+            },
+          },
+        },
       },
     },
     ---@class snacks.explorer.Config
-    explorer = {
-      replace_netrw = true,
-    },
+    explorer = { enabled = true, replace_netrw = true },
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {

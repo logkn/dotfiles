@@ -35,8 +35,8 @@ keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window'
 -- Zoom in on the current window
 keymap.set('n', '<leader>wf', '<C-w>o', { desc = '[W]indow [F]ullscreen' })
 
--- <leader>e for nvim-tree
-keymap.set('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<cr>')
+-- -- <leader>e for nvim-tree
+-- keymap.set('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<cr>')
 
 -- buffer navigation
 keymap.set('n', '<leader>n', '<cmd>bn<cr>')
@@ -53,3 +53,10 @@ keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 -- Lazy
 -- open lazy
 keymap.set('n', '<leader>l', '<cmd>Lazy<cr>')
+
+-- save file
+keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save File' })
+
+-- better indenting
+keymap.set('v', '<', '<gv')
+keymap.set('v', '>', '>gv')
