@@ -44,8 +44,7 @@ return {
       scss = { 'prettier' },
       toml = { 'taplo' },
 
-      -- Python
-      python = { 'isort', 'ruff' },
+      -- Intentionally ignore Python; let ruff do its thing
 
       -- Shell
       sh = { 'shfmt' },
