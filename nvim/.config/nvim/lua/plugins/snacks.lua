@@ -197,6 +197,13 @@ return {
       end,
       desc = 'Select Scratch Buffer',
     },
+    {
+      '<leader>e',
+      function()
+        Snacks.explorer.toggle()
+      end,
+      desc = 'Toggle [E]xplorer',
+    },
   },
 
   ---@type snacks.Config
@@ -263,6 +270,13 @@ return {
         },
       },
       ui_select = true,
+      sources = {
+        explorer = {},
+      },
+    },
+    ---@class snacks.explorer.Config
+    explorer = {
+      replace_netrw = true,
     },
   },
   init = function()
