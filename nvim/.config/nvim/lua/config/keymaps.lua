@@ -48,7 +48,8 @@ keymap.set('n', '<leader>bo', ':%bd|e#|bd#<CR>', { desc = 'Delete other buffers'
 
 -- Diagnostics
 -- go to next diagnostic
-keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
 
 -- Lazy
 -- open lazy

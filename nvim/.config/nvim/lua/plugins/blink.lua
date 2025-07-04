@@ -26,7 +26,7 @@ return {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'default', ['<C-space>'] = {
+    keymap = { preset = 'default', ['<C-c>'] = {
       function(cmp)
         cmp.show { providers = { 'supermaven' } }
       end,
