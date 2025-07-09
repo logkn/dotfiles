@@ -179,7 +179,7 @@ zoxide init fish | source
 # starship
 starship init fish | source
 
-pyenv init - | source
+# pyenv init - | source
 
 # asdf
 # ASDF configuration code
