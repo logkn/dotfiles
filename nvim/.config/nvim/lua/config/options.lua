@@ -42,6 +42,8 @@ vim.g.deprecation_warnings = false
 -- You can disable this for a buffer by setting `vim.b.trouble_lualine = false`
 vim.g.trouble_lualine = true
 
+vim.g.snacks_animate = false
+
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
@@ -81,7 +83,7 @@ opt.ruler = false -- Disable the default ruler
 opt.scrolloff = 4 -- Lines of context
 opt.sessionoptions = { 'buffers', 'curdir', 'tabpages', 'winsize', 'help', 'globals', 'skiprtp', 'folds' }
 opt.shiftround = true -- Round indent
-opt.shiftwidth = 2 -- Size of an indent
+opt.shiftwidth = 4 -- Size of an indent
 opt.shortmess:append { W = true, I = true, c = true, C = true }
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8 -- Columns of context
@@ -93,7 +95,7 @@ opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = 'screen'
 opt.splitright = true -- Put new windows right of current
 opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
-opt.tabstop = 2 -- Number of spaces tabs count for
+opt.tabstop = 4 -- Number of spaces tabs count for
 opt.termguicolors = true -- True color support
 opt.timeoutlen = vim.g.vscode and 1000 or 300 -- Lower than default (1000) to quickly trigger which-key
 opt.undofile = true

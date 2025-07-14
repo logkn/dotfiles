@@ -8,33 +8,38 @@ return {
     opts = {
       ensure_installed = {
         -- LSP servers (matching your vim.lsp.enable() config)
-        'ruff', -- Python LSP (formatting)
-        'basedpyright', -- Python LSP (navigation, diagnostics, etc.)
-        'lua-language-server', -- Lua LSP
-        'gopls', -- Go LSP
-        'typescript-language-server', -- TypeScript LSP
-        'rust-analyzer', -- Rust LSP
-        'tailwindcss-language-server', -- Tailwind CSS LSP
-        'html-lsp', -- HTML LSP
-        'css-lsp', -- CSS LSP
-
-        -- Formatters (for conform.nvim and general use)
+        -- Python
+        'ruff',
+        'ty',
+        'basedpyright',
+        'pyrefly',
+        -- Lua
+        'lua-language-server',
         'stylua',
-        'goimports',
+        'luacheck',
+        -- Go
         -- Note: gofmt comes with Go installation, not managed by Mason
-        'prettier',
-
-        -- Linters and diagnostics
+        'gopls',
+        'goimports',
         'golangci-lint',
-        'eslint_d',
-        'luacheck', -- Lua linting
-
-        -- Additional useful tools
-        'delve', -- Go debugger
+        'delve', -- debugger
+        -- TypeScript
+        'prettier',
+        'typescript-language-server', -- TypeScript LSP
+        -- Rust
+        'rust-analyzer',
+        -- CSS & HTML
+        'tailwindcss-language-server', -- Tailwind CSS LSP
+        'css-lsp', -- CSS LSP
+        'html-lsp', -- HTML LSP
+        -- Shell
         'shfmt', -- Shell formatter
         'shellcheck', -- Shell linter
 
-        -- Optional but useful additions
+        -- Linters and diagnostics
+        'eslint_d',
+
+        -- Static Files
         'markdownlint', -- Markdown linting
         'yamllint', -- YAML linting
         'jsonlint', -- JSON linting

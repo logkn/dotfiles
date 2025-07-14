@@ -3,7 +3,9 @@ vim.lsp.enable {
   'gopls',
   'lua_ls',
   'ruff',
-  'basedpyright',
+  -- 'basedpyright',
+  'pyrefly',
+  -- 'ty',
   'rust-analyzer',
   'tailwindcss',
 }
