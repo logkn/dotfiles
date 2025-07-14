@@ -1,16 +1,16 @@
 return {
-  "nvim-tree/nvim-tree.lua",
-  version = "*",
+  'nvim-tree/nvim-tree.lua',
+  version = '*',
   lazy = false,
+  enabled = false,
   requires = {
-    "nvim-tree/nvim-web-devicons",
+    'nvim-tree/nvim-web-devicons',
   },
   opts = {
-
     filters = {
       dotfiles = false,
       custom = {
-        "*lock.json",
+        '*lock.json',
       },
       exclude = {},
     },
@@ -19,9 +19,9 @@ return {
     },
   },
   config = function(_, opts)
-    require("nvim-tree").setup(opts)
+    require('nvim-tree').setup(opts)
 
-    vim.api.nvim_set_hl(0, "NvimTreeNormal", { guibg = nil, ctermbg = nil })
-    vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { guibg = nil, ctermbg = nil })
+    vim.api.nvim_set_hl(0, 'NvimTreeNormal', { guibg = nil, ctermbg = nil })
+    vim.api.nvim_set_hl(0, 'NvimTreeEndOfBuffer', { guibg = nil, ctermbg = nil })
   end,
 }

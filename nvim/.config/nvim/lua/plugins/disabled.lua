@@ -1,6 +1,5 @@
 local disabled_plugins = {
-  "nvim-neo-tree/neo-tree.nvim",
-  "folke/trouble.nvim",
+  'nvim-neo-tree/neo-tree.nvim',
 }
 
 local function map_plugins(plugins)
