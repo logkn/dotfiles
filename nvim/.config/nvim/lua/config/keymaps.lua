@@ -43,9 +43,6 @@ keymap.set('n', '<leader>n', '<cmd>bn<cr>')
 keymap.set('n', '<leader>p', '<cmd>bp<cr>')
 keymap.set('n', '<leader>x', '<cmd>bd<cr>')
 
--- buffer operations
-keymap.set('n', '<leader>bo', ':%bd|e#|bd#<CR>', { desc = 'Delete other buffers' })
-
 -- Diagnostics
 -- go to next diagnostic
 keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
