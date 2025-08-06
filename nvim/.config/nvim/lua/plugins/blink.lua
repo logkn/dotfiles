@@ -49,6 +49,7 @@ return {
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer', 'supermaven' },
+      -- default = { 'lsp', 'path', 'snippets', 'buffer' },
       compat = {},
       providers = {
         supermaven = {
@@ -64,7 +65,7 @@ return {
     -- when the Rust fuzzy matcher is not available, by using `implementation = "prefer_rust"`
     --
     -- See the fuzzy documentation for more information
-    fuzzy = { implementation = 'rust' },
+    fuzzy = { implementation = 'lua' },
   },
   opts_extend = { 'sources.default' },
 }
