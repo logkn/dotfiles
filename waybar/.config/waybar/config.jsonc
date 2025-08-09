@@ -16,6 +16,7 @@
         "modules-right": [
             "pulseaudio",
             "network",
+            "custom/bluetooth",
             "custom/weather",
             "cpu",
             "custom/gpu"

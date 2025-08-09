@@ -46,7 +46,7 @@ window#waybar.bottom {
   color: #d79921;
 }
 
-#clock, #battery, #network, #pulseaudio, #tray, #cpu, #custom-gpu, #custom-weather, #mpris {
+#clock, #battery, #network, #pulseaudio, #tray, #cpu, #custom-gpu, #custom-weather, #custom-bluetooth, #mpris {
   background-color: #282828;
   border-radius: 6px;
   margin: 2px 4px;
@@ -75,6 +75,10 @@ window#waybar.bottom {
 
 #custom-gpu {
   color: #d3869b;
+}
+
+#custom-bluetooth {
+  color: #458588;
 }
 
 #clock {

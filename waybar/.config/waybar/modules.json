@@ -41,6 +41,11 @@
         "format-ethernet": " {ipaddr}",
         "format-disconnected": "⚠"
     },
+    "custom/bluetooth": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "/home/logan/.config/waybar/scripts/open-bluetooth-manager.sh"
+    },
     "custom/weather": {
         "exec": "curl -s 'wttr.in/?format=1'",
         "interval": 600
