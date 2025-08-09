@@ -4,8 +4,8 @@ vim.lsp.enable {
   'lua_ls',
   'ruff',
   -- 'basedpyright',
-  -- 'pyrefly',
-  'ty',
+  'pyrefly',
+  -- 'ty',
   'rust-analyzer',
   'tailwindcss',
 }
