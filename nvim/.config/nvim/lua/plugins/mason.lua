@@ -43,6 +43,7 @@ return {
         'markdownlint', -- Markdown linting
         'yamllint', -- YAML linting
         'jsonlint', -- JSON linting
+        'taplo', -- TOML formatter/LSP
       },
     },
     config = function(_, opts)
