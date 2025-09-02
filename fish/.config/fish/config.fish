@@ -195,6 +195,3 @@ if not contains $_asdf_shims $PATH
     set -gx --prepend PATH $_asdf_shims
 end
 set --erase _asdf_shims
-
-# Set Claude Code alias here, not as a func
-alias claude "~/.claude/local/claude"
