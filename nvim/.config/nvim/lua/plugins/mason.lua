@@ -11,7 +11,7 @@ return {
         -- Python
         'ruff',
         'ty',
-        'basedpyright',
+        -- 'basedpyright', # this one is too bulky
         'pyrefly',
         -- Lua
         'lua-language-server',
