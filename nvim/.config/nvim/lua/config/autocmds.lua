@@ -43,20 +43,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local vmap = function(keys, func, desc)
       vim.keymap.set('v', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
     end
-
-    -- defaults:
-    -- https://neovim.io/doc/user/news-0.11.html#_defaults
-
-    map('gl', vim.diagnostic.open_float, 'Open Diagnostic Float')
-    map('K', vim.lsp.buf.hover, 'Hover Documentation')
-    map('gs', vim.lsp.buf.signature_help, 'Signature Documentation')
-    map('gD', vim.lsp.buf.declaration, 'Goto Declaration')
-    -- map('gd', vim.lsp.buf.definition, 'Goto Definition')
-    map('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
-    map('<leader>cr', vim.lsp.buf.rename, 'Rename all references')
-    vmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
-    vmap('<leader>cr', vim.lsp.buf.rename, 'Rename all references')
-
     local function client_supports_method(client, method, bufnr)
       if vim.fn.has 'nvim-0.11' == 1 then
         return client:supports_method(method, bufnr)
@@ -64,6 +50,68 @@ vim.api.nvim_create_autocmd('LspAttach', {
         return client.supports_method(method, { bufnr = bufnr })
       end
     end
+    local function hover()
+      local bufnr = event.buf
+      local method = vim.lsp.protocol.Methods.textDocument_hover
+      local clients = vim.lsp.get_clients { bufnr = bufnr }
+      local supported = {}
+
+      for _, client in ipairs(clients) do
+        if client_supports_method(client, method, bufnr) then
+          table.insert(supported, client)
+        end
+      end
+
+      if #supported == 0 then
+        vim.cmd('normal! K')
+        return
+      end
+
+      local util = vim.lsp.util
+      local params = util.make_position_params(0, supported[1].offset_encoding)
+      local handler = vim.lsp.with(vim.lsp.handlers.hover, { focus_id = 'lsp-hover' })
+
+      vim.lsp.buf_request_all(bufnr, method, params, function(results)
+        local last_error
+
+        for _, client in ipairs(supported) do
+          local response = results[client.id]
+          if response then
+            if response.err then
+              last_error = response.err
+            elseif response.result and response.result.contents then
+              handler(nil, response.result, {
+                bufnr = bufnr,
+                client_id = client.id,
+                method = method,
+              })
+              return
+            end
+          end
+        end
+
+        if last_error then
+          local message = type(last_error) == 'table' and (last_error.message or last_error.code) or last_error
+          vim.notify(('Hover request failed: %s'):format(message), vim.log.levels.ERROR, { title = 'LSP Hover' })
+          return
+        end
+
+        vim.notify('No information available', vim.log.levels.INFO, { title = 'LSP Hover' })
+      end)
+    end
+
+    -- defaults:
+    -- https://neovim.io/doc/user/news-0.11.html#_defaults
+
+    map('gl', vim.diagnostic.open_float, 'Open Diagnostic Float')
+    map('K', hover, 'Hover Documentation')
+    map('gs', vim.lsp.buf.signature_help, 'Signature Documentation')
+    map('gD', vim.lsp.buf.declaration, 'Goto Declaration')
+    -- map('gd', vim.lsp.buf.definition, 'Goto Definition')
+    map('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+    map('<leader>cr', vim.lsp.buf.rename, 'Rename all references')
+    vmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+    vmap('<leader>cr', vim.lsp.buf.rename, 'Rename all references')
 
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
