@@ -1,5 +1,53 @@
 local pokemon = 'ho-oh'
 
+local function make_lsp_goto(method, picker_fn, label)
+  return function()
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    if #clients == 0 then
+      vim.notify(('No LSP clients available for %s'):format(label or method), vim.log.levels.WARN)
+      return
+    end
+
+    local params = vim.lsp.util.make_position_params(0, clients[1].offset_encoding or 'utf-16')
+
+    vim.lsp.buf_request_all(0, method, params, function(responses)
+      local locations = {}
+
+      for client_id, response in pairs(responses) do
+        local result = response.result
+        if result then
+          local client = vim.lsp.get_client_by_id(client_id)
+          local encoding = client and client.offset_encoding or 'utf-16'
+          if not vim.islist(result) then
+            result = { result }
+          end
+
+          for _, location in ipairs(result) do
+            locations[#locations + 1] = { location = location, encoding = encoding }
+          end
+        end
+      end
+
+      if #locations == 1 then
+        local entry = locations[1]
+        vim.schedule(function()
+          vim.lsp.util.show_document(entry.location, entry.encoding, { reuse_win = true, focus = true })
+        end)
+        return
+      end
+
+      if #locations == 0 then
+        vim.schedule(function()
+          vim.notify(('No %s found'):format(label or 'locations'), vim.log.levels.INFO)
+        end)
+        return
+      end
+
+      vim.schedule(picker_fn)
+    end)
+  end
+end
+
 return {
   'folke/snacks.nvim',
   priority = 1000,
@@ -171,16 +219,16 @@ return {
     },
     {
       'gd',
-      function()
+      make_lsp_goto('textDocument/definition', function()
         Snacks.picker.lsp_definitions()
-      end,
+      end, 'definitions'),
       desc = '[G]oto [D]efinition',
     },
     {
       'gy',
-      function()
+      make_lsp_goto('textDocument/typeDefinition', function()
         Snacks.picker.lsp_type_definitions()
-      end,
+      end, 'type definitions'),
       desc = '[G]oto T[y]pe [D]efinition',
     },
     {
