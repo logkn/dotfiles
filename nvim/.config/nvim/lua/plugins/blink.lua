@@ -1,7 +1,8 @@
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
-  dependencies = { 'rafamadriz/friendly-snippets', 'supermaven-inc/supermaven-nvim', 'huijiro/blink-cmp-supermaven' },
+  -- dependencies = { 'rafamadriz/friendly-snippets', 'supermaven-inc/supermaven-nvim', 'huijiro/blink-cmp-supermaven' },
+  dependencies = { 'rafamadriz/friendly-snippets', 'fang2hou/blink-copilot', 'copilotlsp-nvim/copilot-lsp' },
 
   -- use a release tag to download pre-built binaries
   version = '1.*',
@@ -26,11 +27,24 @@ return {
     -- C-k: Toggle signature help (if signature.enabled = true)
     --
     -- See :h blink-cmp-config-keymap for defining your own keymap
-    keymap = { preset = 'default', ['<C-c>'] = {
-      function(cmp)
-        cmp.show { providers = { 'supermaven' } }
-      end,
-    } },
+    keymap = {
+      preset = 'default',
+      -- ['<C-c>'] = {
+      --   function(cmp)
+      --     cmp.show { providers = { 'supermaven' } }
+      --   end,
+      -- },
+      ['<Tab>'] = {
+        'snippet_forward',
+        function() -- sidekick next edit suggestion
+          return require('sidekick').nes_jump_or_apply()
+        end,
+        function() -- if you are using Neovim's native inline completions
+          return vim.lsp.inline_completion.get()
+        end,
+        'fallback',
+      },
+    },
 
     appearance = {
       -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -48,16 +62,16 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'supermaven' },
-      -- default = { 'lsp', 'path', 'snippets', 'buffer' },
+      -- default = { 'lsp', 'path', 'snippets', 'buffer', 'supermaven' },
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
       compat = {},
-      providers = {
-        supermaven = {
-          name = 'supermaven',
-          module = 'blink-cmp-supermaven',
-          async = true,
-        },
-      },
+      -- providers = {
+      --   supermaven = {
+      --     name = 'supermaven',
+      --     module = 'blink-cmp-supermaven',
+      --     async = true,
+      --   },
+      -- },
     },
 
     -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance

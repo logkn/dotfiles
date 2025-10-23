@@ -1,4 +1,5 @@
 return {
+  enabled = false,
 
   'supermaven-inc/supermaven-nvim',
   event = 'InsertEnter',

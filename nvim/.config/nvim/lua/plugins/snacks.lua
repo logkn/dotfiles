@@ -2,7 +2,7 @@ local pokemon = 'ho-oh'
 
 local function make_lsp_goto(method, picker_fn, label)
   return function()
-    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    local clients = vim.lsp.get_clients { bufnr = 0 }
     if #clients == 0 then
       vim.notify(('No LSP clients available for %s'):format(label or method), vim.log.levels.WARN)
       return
@@ -310,6 +310,11 @@ return {
       },
     },
     picker = {
+      actions = {
+        sidekick_send = function(...)
+          return require('sidekick.cli.snacks').send(...)
+        end,
+      },
       matcher = {
         frecency = true,
         fuzzy = true,
@@ -324,6 +329,10 @@ return {
             -- to close the picker on ESC instead of going to normal mode,
             -- add the following keymap to your config
             -- ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+            ['<a-a>'] = {
+              'sidekick_send',
+              mode = { 'n', 'i' },
+            },
           },
         },
       },

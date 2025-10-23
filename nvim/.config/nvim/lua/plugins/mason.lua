@@ -44,6 +44,9 @@ return {
         'yamllint', -- YAML linting
         'jsonlint', -- JSON linting
         'taplo', -- TOML formatter/LSP
+
+        -- AI
+        'copilot-language-server',
       },
     },
     config = function(_, opts)

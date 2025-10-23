@@ -20,9 +20,6 @@ return {
     'Pipfile',
     '.git',
   },
-  on_exit = function(code, _, _)
-    vim.notify('Closing Pyrefly LSP exited with code: ' .. code, vim.log.levels.INFO)
-  end,
 
   capabilities = vim.tbl_deep_extend('force', {}, vim.lsp.protocol.make_client_capabilities(), blink.get_lsp_capabilities(), {
     fileOperations = {
