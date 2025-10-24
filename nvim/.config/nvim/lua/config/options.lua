@@ -47,6 +47,7 @@ vim.g.snacks_animate = false
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
+opt.autoread = true
 -- only set clipboard if not in ssh, to make sure the OSC 52
 -- integration works automatically. Requires Neovim >= 0.10.0
 opt.clipboard = vim.env.SSH_TTY and '' or 'unnamedplus' -- Sync with system clipboard
@@ -105,6 +106,7 @@ opt.virtualedit = 'block' -- Allow cursor to move where there is no text in visu
 opt.wildmode = 'longest:full,full' -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = true -- Enable line wrap
+opt.backupcopy = 'yes'
 
 if vim.fn.has 'nvim-0.10' == 1 then
   opt.smoothscroll = true
