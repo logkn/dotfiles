@@ -142,3 +142,19 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
     vim.notify(('File changed on disk and reloaded: %s'):format(args.file), vim.log.levels.WARN, { title = 'autoread' })
   end,
 })
+
+-- Hide Copilot suggestions when Blink menu is open
+-- vim.api.nvim_create_autocmd('User', {
+--   pattern = 'BlinkCmpMenuOpen',
+--   callback = function()
+--     require('copilot.suggestion').dismiss()
+--     vim.b.copilot_suggestion_hidden = true
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd('User', {
+--   pattern = 'BlinkCmpMenuClose',
+--   callback = function()
+--     vim.b.copilot_suggestion_hidden = false
+--   end,
+-- })

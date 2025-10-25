@@ -103,20 +103,6 @@ return {
       end,
       desc = 'Git Browse',
     },
-    {
-      '<leader>gf',
-      function()
-        Snacks.lazygit.log_file()
-      end,
-      desc = 'Lazygit Current File History',
-    },
-    {
-      '<leader>gl',
-      function()
-        Snacks.lazygit.log()
-      end,
-      desc = 'Lazygit Log (cwd)',
-    },
     -- Terminal
     {
       '<c-/>',
@@ -310,11 +296,6 @@ return {
       },
     },
     picker = {
-      actions = {
-        sidekick_send = function(...)
-          return require('sidekick.cli.snacks').send(...)
-        end,
-      },
       matcher = {
         frecency = true,
         fuzzy = true,
@@ -329,10 +310,6 @@ return {
             -- to close the picker on ESC instead of going to normal mode,
             -- add the following keymap to your config
             -- ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
-            ['<a-a>'] = {
-              'sidekick_send',
-              mode = { 'n', 'i' },
-            },
           },
         },
       },
