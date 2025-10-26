@@ -71,7 +71,7 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="0%"
 }
 
 // You can configure outputs by their name, which you can find
@@ -113,10 +113,10 @@ layout {
     center-focused-column "never"
 
     blur {
-    on
-    passes 4 // number of times to apply the blur effect
-    radius 1.0 // radius of the blur effect
-    noise 0.1 //add grain to the blur
+        on
+        passes 2 // number of times to apply the blur effect
+        radius 12.0 // radius of the blur effect
+        noise 0.0 //add grain to the blur
     }
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
@@ -157,7 +157,7 @@ layout {
         // off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 1
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -165,13 +165,13 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        active-color "#fe8019"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#505050"
+        inactive-color "#50494500"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -180,17 +180,18 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        active-gradient from="#ffffff40" to="#ffffff10" angle=120
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
         // To do that, set relative-to="workspace-view".
         //
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        // inactive-gradient from="#504945" to="#427b58" angle=60
     }
 
     // You can also add a border. It's similar to the focus ring, but always visible.
-    border {
+    // Temporarily disable window borders to evaluate look without them.
+    /-border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
         off
@@ -235,16 +236,16 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 30
+        softness 18
 
         // Spread expands the shadow.
-        spread 5
+        spread 2
 
         // Offset moves the shadow relative to the window.
-        offset x=0 y=5
+        offset x=0 y=4
 
         // You can also change the shadow color and opacity.
-        color "#0007"
+        color "#0005"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -266,11 +267,12 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
+spawn-at-startup "nm-applet"
+spawn-at-startup "swaync"
 spawn-at-startup "waybar"
 spawn-at-startup "hyprpaper"
-spawn-at-startup "nm-applet"
 spawn-at-startup "clipboard-sync"
-spawn-at-startup "mako"
+// spawn-at-startup "mako"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -320,6 +322,31 @@ window-rule {
     default-column-width {}
 }
 
+
+layer-rule {
+    match namespace="rofi"
+    opacity 0.8
+    blur {
+        on
+        passes 3 // number of times to apply the blur effect
+        radius 12.0 // radius of the blur effect
+        noise 0.0 //add grain to the blur
+    }
+}
+
+
+layer-rule {
+    match namespace="waybar"
+    blur {
+        on
+        passes 3 // number of times to apply the blur effect
+        radius 12.0 // radius of the blur effect
+        noise 0.0 //add grain to the blur
+    }
+}
+
+
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
@@ -344,7 +371,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
-    geometry-corner-radius 12
+    geometry-corner-radius 10
     clip-to-geometry true
 }
 
@@ -356,7 +383,21 @@ window-rule {
 window-rule {
     match is-active=false
 
-    opacity 0.75
+    opacity 0.65
+}
+
+window-rule {
+    match is-active=true
+
+    shadow {
+        on
+        softness 20
+        spread 4
+        offset x=0 y=5
+        draw-behind-window false
+        color "#00000088"
+        // inactive-color "#00000064"
+    }
 }
 
 binds {
@@ -465,12 +506,16 @@ binds {
 
     Mod+Page_Down      { focus-workspace-down; }
     Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
+    // Mod+U              { focus-workspace-down; }
+    // Mod+I              { focus-workspace-up; }
+    Mod+N              { focus-workspace-down; }
+    Mod+P              { focus-workspace-up; }
     Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
     Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
     Mod+Ctrl+U         { move-column-to-workspace-down; }
     Mod+Ctrl+I         { move-column-to-workspace-up; }
+    Mod+Ctrl+N         { move-workspace-down; }
+    Mod+Ctrl+P         { move-workspace-up; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
@@ -626,4 +671,11 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+}
+
+cursor {
+    xcursor-theme "breeze_cursors"
+    xcursor-size 24
+    hide-when-typing
+    hide-after-inactive-ms 1000
 }
