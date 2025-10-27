@@ -272,7 +272,7 @@ spawn-at-startup "swaync"
 spawn-at-startup "waybar"
 spawn-at-startup "hyprpaper"
 spawn-at-startup "clipboard-sync"
-// spawn-at-startup "mako"
+spawn-sh-at-startup "~/.config/niri/scripts/game-autofocus.sh"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -321,6 +321,22 @@ window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
 }
+
+
+window-rule {
+    // Case-insensitive, matches "steam" or "steamwebhelper"
+    match app-id=r#"(?i)^(steam|steamwebhelper)$"#
+    // ...set whatever behavior you want:
+    open-fullscreen true
+    open-focused true
+    open-on-workspace "gaming"
+}
+
+
+// window-rule {
+//     match 
+//
+// }
 
 
 layer-rule {
@@ -418,6 +434,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+B hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
+    Mod+G hotkey-overlay-title="Open Steam (Big Picture)" { spawn "~/.config/niri/scripts/steam-start.sh"; }
     Mod+E hotkey-overlay-title="File Explorer" { spawn "dolphin"; }
     Mod+R hotkey-overlay-title="Launcher" { spawn "~/.config/rofi/launchers/type-3/launcher.sh"; }
     Mod+M hotkey-overlay-title="Power Menu" { spawn "~/.config/rofi/powermenu/type-4/powermenu.sh"; }
@@ -678,4 +695,10 @@ cursor {
     xcursor-size 24
     hide-when-typing
     hide-after-inactive-ms 1000
+}
+
+// =================== Workspaces ===================
+
+workspace "gaming" {
+    open-on-output "DP-2"
 }
