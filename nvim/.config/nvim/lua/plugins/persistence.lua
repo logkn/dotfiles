@@ -1,4 +1,4 @@
 return {
-  "folke/persistence.nvim",
+  'folke/persistence.nvim',
   opts = {},
 }

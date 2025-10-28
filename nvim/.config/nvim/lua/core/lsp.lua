@@ -10,6 +10,7 @@ vim.lsp.enable {
   'rust-analyzer',
   'tailwindcss',
   'copilot',
+  'ts_ls',
 }
 
 vim.diagnostic.config {

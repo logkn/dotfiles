@@ -1,3 +1,3 @@
 return {
-  "almo7aya/openingh.nvim",
+  'almo7aya/openingh.nvim',
 }

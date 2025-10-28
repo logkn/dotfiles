@@ -1,6 +1,6 @@
 return {
-  "b0o/SchemaStore.nvim",
+  'b0o/SchemaStore.nvim',
   lazy = true,
-  module = "schemastore",
+  module = 'schemastore',
   version = false, -- last release is way too old
 }

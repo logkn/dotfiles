@@ -1,7 +1,7 @@
 return {
-  "stevearc/oil.nvim",
+  'stevearc/oil.nvim',
   -- Optional dependencies
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     default_file_explorer = false,
     view_options = {
@@ -18,14 +18,14 @@ return {
         winblend = 0,
       },
     },
-    columns = { "icon" },
+    columns = { 'icon' },
     keymaps = {
-      ["<C-h>"] = false,
-      ["<M-h>"] = "actions.select_split",
+      ['<C-h>'] = false,
+      ['<M-h>'] = 'actions.select_split',
     },
   },
   keys = {
-    { "-", "<cmd>Oil<cr>", desc = "Open parent directory" },
+    { '-', '<cmd>Oil<cr>', desc = 'Open parent directory' },
     -- { "<leader>-", require("oil").toggle_float },
   },
 }

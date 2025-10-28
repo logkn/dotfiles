@@ -1,3 +1,3 @@
 return {
-  "lambdalisue/vim-suda",
+  'lambdalisue/vim-suda',
 }

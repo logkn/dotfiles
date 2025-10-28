@@ -1,7 +1,7 @@
 return {
-  "echasnovski/mini.hipatterns",
+  'echasnovski/mini.hipatterns',
   version = false,
-  event = "BufReadPre",
+  event = 'BufReadPre',
   opts = {
     highlighters = {},
   },
