@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # notify-send "Focusing on Gaming workspace..."
 # niri msg action focus-workspace "gaming"
 
