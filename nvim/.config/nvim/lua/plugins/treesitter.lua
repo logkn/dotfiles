@@ -50,6 +50,7 @@ return {
       'zig',
       'php',
       'blade',
+      'latex',
     },
     incremental_selection = {
       enable = true,

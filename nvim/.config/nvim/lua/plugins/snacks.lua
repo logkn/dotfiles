@@ -256,7 +256,29 @@ return {
     },
     indent = { enabled = true },
     notify = { enabled = true },
-    image = { enabled = true },
+    image = {
+      enabled = true,
+      math = {
+        enabled = true,
+
+        latex = {
+          font_size = 'Large', -- see https://www.sascha-frank.com/latex-font-size.html
+          -- for latex documents, the doc packages are included automatically,
+          -- but you can add more packages here. Useful for markdown documents.
+          packages = { 'amsmath', 'amssymb', 'amsfonts', 'amscd', 'mathtools' },
+          tpl = [[
+        \documentclass[preview,border=0pt,varwidth,12pt]{standalone}
+        \usepackage{${packages}}
+        \begin{document}
+        ${header}
+        { \${font_size} \selectfont
+          \color[HTML]{${color}}
+        ${content}}
+        \end{document}]],
+        },
+      },
+      doc = { enabled = true, inline = true },
+    },
     gitbrowse = { enabled = true },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
