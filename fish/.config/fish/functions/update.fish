@@ -5,7 +5,7 @@ function update --description 'Update system packages based on OS'
             npm install -g @openai/codex
         case Darwin
             brew upgrade $argv
-            npm install -g @openai/codex
+            npm install -g @openai/codex --registry=https://registry.npmjs.org/
         case '*'
             echo "Unsupported OS: "(uname)
             return 1
