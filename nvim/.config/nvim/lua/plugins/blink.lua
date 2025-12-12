@@ -95,7 +95,6 @@ return {
         --     async = true,
         --   },
         -- },
-        compat = {},
       },
 
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
