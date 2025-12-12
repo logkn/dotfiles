@@ -2,6 +2,9 @@ local blink = require 'blink.cmp'
 return {
   cmd = { 'ruff', 'server' },
   filetypes = { 'python' },
+  on_attach = function(client, _)
+    client.server_capabilities.hoverProvider = false
+  end,
   root_markers = {
     'pyproject.toml',
     'ruff.toml',
