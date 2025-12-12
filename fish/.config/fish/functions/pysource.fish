@@ -1,3 +1,4 @@
 function pysource
-    source .venv/bin/activate.fish && set -x PYTHONPATH "." $argv
+    set -gx PYTHONPATH "$PWD"
+    source .venv/bin/activate.fish
 end
