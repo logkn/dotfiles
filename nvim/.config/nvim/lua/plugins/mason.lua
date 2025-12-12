@@ -44,6 +44,7 @@ return {
 
         -- Static Files
         'markdownlint', -- Markdown linting
+        'marksman', -- Markdown LSP, with linking (like Obsidian)
         'yamllint', -- YAML linting
         'jsonlint', -- JSON linting
         'taplo', -- TOML formatter/LSP
