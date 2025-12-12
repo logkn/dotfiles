@@ -6,6 +6,9 @@ return {
     keys = { { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' } },
     build = ':MasonUpdate',
     opts = {
+      registries = {
+        'github:mason-org/mason-registry',
+      },
       ensure_installed = {
         -- LSP servers (matching your vim.lsp.enable() config)
         -- Python
