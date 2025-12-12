@@ -47,6 +47,7 @@ vim.g.snacks_animate = false
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
+vim.go.autoread = true
 opt.autoread = true
 -- only set clipboard if not in ssh, to make sure the OSC 52
 -- integration works automatically. Requires Neovim >= 0.10.0

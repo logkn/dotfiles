@@ -133,15 +133,68 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-vim.api.nvim_create_autocmd({ 'FocusGained', 'TermClose', 'TermLeave', 'BufEnter', 'CursorHold' }, {
-  command = 'checktime',
+-- Check for file changes, good for ai coding agents that modify files
+local watch = require 'config.watch'
+watch.enable()
+
+-- When a buffer is reloaded from disk via `checktime`, treesitter/LSP can lag behind.
+-- Force a refresh so highlights/hover stay in sync with externally-edited files.
+vim.api.nvim_create_autocmd('FileChangedShellPost', {
+  group = augroup 'reload-refresh',
+  callback = function(event)
+    local buf = event.buf
+    if not (buf and buf ~= 0 and vim.api.nvim_buf_is_valid(buf)) then
+      return
+    end
+
+    -- Ensure treesitter highlighting is active for the reloaded buffer.
+    -- Do this slightly deferred: `checktime` reloads can briefly leave the buffer mid-update.
+    vim.defer_fn(function()
+      if not (vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_is_loaded(buf)) then
+        return
+      end
+
+      -- Prefer nvim-treesitter's buffer-scoped enable command when available.
+      local ok_cmd = pcall(vim.api.nvim_buf_call, buf, function()
+        vim.cmd 'silent! TSBufDisable highlight'
+        vim.cmd 'silent! TSBufEnable highlight'
+      end)
+      if not ok_cmd then
+        pcall(vim.treesitter.start, buf)
+      end
+    end, 50)
+
+    -- Best-effort: some LSP servers can get out of sync on external reloads.
+    -- Send a full-buffer didChange to attached clients.
+    local clients = vim.lsp.get_clients { bufnr = buf }
+    if #clients == 0 then
+      return
+    end
+
+    local ok_lines, lines = pcall(vim.api.nvim_buf_get_lines, buf, 0, -1, false)
+    if not ok_lines then
+      return
+    end
+
+    local text = table.concat(lines, '\n')
+    local uri = vim.uri_from_bufnr(buf)
+    local version = vim.api.nvim_buf_get_changedtick(buf)
+
+    for _, client in ipairs(clients) do
+      if client.supports_method and client:supports_method('textDocument/didChange', buf) then
+        client:notify('textDocument/didChange', {
+          textDocument = { uri = uri, version = version },
+          contentChanges = { { text = text } },
+        })
+      end
+    end
+  end,
 })
 
--- Friendlier messages for external changes
-vim.api.nvim_create_autocmd('FileChangedShellPost', {
-  callback = function(args)
-    vim.notify(('File changed on disk and reloaded: %s'):format(args.file), vim.log.levels.WARN, { title = 'autoread' })
-  end,
+-- Fallback: check on focus changes (some filesystems don't emit fs events)
+vim.api.nvim_create_autocmd('FocusGained', {
+  group = augroup 'checktime-on-focus',
+  callback = watch.refresh,
 })
 
 -- Hide Copilot suggestions when Blink menu is open

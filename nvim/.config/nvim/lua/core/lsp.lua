@@ -44,7 +44,11 @@ local function restart_lsp(bufnr)
   local clients = vim.lsp.get_clients { bufnr = bufnr }
 
   for _, client in ipairs(clients) do
-    vim.lsp.Client:stop(client.id)
+    if type(client.stop) == 'function' then
+      pcall(client.stop, client, true)
+    elseif vim.lsp.stop_client then
+      pcall(vim.lsp.stop_client, client.id, true)
+    end
   end
 
   vim.defer_fn(function()
