@@ -190,6 +190,13 @@ return {
       desc = '[S]earch [K]eymaps',
     },
     {
+      '<leader>st',
+      function()
+        Snacks.picker.lines()
+      end,
+      desc = '[S]earch [T]his Buffer',
+    },
+    {
       '<leader>ss',
       function()
         Snacks.picker.lsp_symbols()
