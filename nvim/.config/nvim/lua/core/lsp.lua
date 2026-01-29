@@ -11,6 +11,7 @@ vim.lsp.enable {
   'tailwindcss',
   'copilot',
   'ts_ls',
+  'marksman',
 }
 
 vim.diagnostic.config {
