@@ -143,7 +143,7 @@ vim.api.nvim_create_autocmd({ 'FocusGained', 'TermClose', 'TermLeave', 'BufEnter
 -- Friendlier messages for external changes
 vim.api.nvim_create_autocmd('FileChangedShellPost', {
   callback = function(args)
-    vim.notify(('File changed on disk and reloaded: %s'):format(args.file), vim.log.levels.WARN, { title = 'autoread' })
+    -- vim.notify(('File changed on disk and reloaded: %s'):format(args.file), vim.log.levels.WARN, { title = 'autoread' })
   end,
 })
 
