@@ -1,4 +1,4 @@
-vim.lsp.inline_completion.enable()
+-- vim.lsp.inline_completion.enable()
 vim.lsp.enable {
   'css-ls',
   'gopls',

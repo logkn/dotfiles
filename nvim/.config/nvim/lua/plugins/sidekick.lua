@@ -12,17 +12,6 @@ return {
     },
     keys = {
       {
-        '<c-.>',
-        function()
-          require('sidekick.cli').toggle {
-            name = 'codex',
-            focus = true,
-          }
-        end,
-        desc = 'Sidekick Toggle',
-        mode = { 'n', 't', 'i', 'x' },
-      },
-      {
         '<tab>',
         function()
           -- if there is a next edit, jump to it, otherwise apply it if any
@@ -32,6 +21,17 @@ return {
         end,
         expr = true,
         desc = 'Goto/Apply Next Edit Suggestion',
+      },
+      {
+        '<c-.>',
+        function()
+          require('sidekick.cli').toggle {
+            name = 'codex',
+            focus = true,
+          }
+        end,
+        desc = 'Sidekick Toggle',
+        mode = { 'n', 't', 'i', 'x' },
       },
       -- {
       --   '<leader>aa',
@@ -87,14 +87,14 @@ return {
         mode = { 'n', 'x' },
         desc = 'Sidekick Select Prompt',
       },
-      -- Example of a keybinding to open Claude directly
-      {
-        '<leader>ac',
-        function()
-          require('sidekick.cli').toggle { name = 'claude', focus = true }
-        end,
-        desc = 'Sidekick Toggle Claude',
-      },
+      -- -- Example of a keybinding to open Claude directly
+      -- {
+      --   '<leader>ac',
+      --   function()
+      --     require('sidekick.cli').toggle { name = 'claude', focus = true }
+      --   end,
+      --   desc = 'Sidekick Toggle Claude',
+      -- },
     },
   },
 

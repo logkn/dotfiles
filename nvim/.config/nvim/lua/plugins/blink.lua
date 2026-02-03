@@ -3,13 +3,15 @@ return {
     'saghen/blink.cmp',
     -- optional: provides snippets for the snippet source
     -- dependencies = { 'rafamadriz/friendly-snippets', 'supermaven-inc/supermaven-nvim', 'huijiro/blink-cmp-supermaven' },
-    dependencies = { 'rafamadriz/friendly-snippets' },
+    dependencies = { 'rafamadriz/friendly-snippets', 'fang2hou/blink-copilot' },
 
     -- use a release tag to download pre-built binaries
+    -- Now I will try typing, how well
     version = '1.*',
 
     -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
     -- build = 'cargo build --release',
+    -- Let's see about typing now, what kind of
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -34,16 +36,16 @@ return {
         --     cmp.show { providers = { 'supermaven' } }
         --   end,
         -- },
-        ['<Tab>'] = {
-          'snippet_forward',
-          function() -- sidekick next edit suggestion
-            return require('sidekick').nes_jump_or_apply()
-          end,
-          function() -- if you are using Neovim's native inline completions
-            return vim.lsp.inline_completion.get()
-          end,
-          'fallback',
-        },
+        -- ['<Tab>'] = {
+        --   'snippet_forward',
+        --   function() -- sidekick next edit suggestion
+        --     return require('sidekick').nes_jump_or_apply()
+        --   end,
+        --   -- function() -- if you are using Neovim's native inline completions
+        --   --   return vim.lsp.inline_completion.get()
+        --   -- end,
+        --   'fallback',
+        -- },
       },
       cmdline = {
         enabled = true,
@@ -85,16 +87,16 @@ return {
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
 
-        -- providers = {
-        --   copilot = {
-        --     name = 'copilot',
-        --     module = 'blink-copilot',
-        --     score_offset = 100,
-        --     async = true,
-        --   },
-        -- },
+        providers = {
+          copilot = {
+            name = 'copilot',
+            module = 'blink-copilot',
+            score_offset = 100,
+            async = true,
+          },
+        },
       },
 
       -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
