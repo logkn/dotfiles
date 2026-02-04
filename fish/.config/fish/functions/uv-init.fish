@@ -1,3 +1,9 @@
-function uv-init --wraps='uv pin python 3.12 && uv init && rm hello.py' --wraps='uv python pin 3.12 && uv init && rm hello.py' --description 'alias uv-init=uv python pin 3.12 && uv init && rm hello.py'
-    uv python pin 3.12 && uv init && rm main.py $argv && mkdir src && touch src/__init__.py && mkdir tests && touch tests/__init__.py
+function uv-init --wraps='uv python pin 3.13 && uv init && rm main.py' --description 'alias uv-init=uv python pin 3.13 && uv init && rm main.py'
+    set -l pyver 3.13
+    argparse -n uv-init 'v/version=' -- $argv
+    or return
+    if set -q _flag_version
+        set pyver $_flag_version
+    end
+    uv python pin $pyver && uv init $argv && rm main.py && mkdir src && touch src/__init__.py && mkdir tests && touch tests/__init__.py
 end
