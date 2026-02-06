@@ -45,7 +45,7 @@ local function restart_lsp(bufnr)
   local clients = vim.lsp.get_clients { bufnr = bufnr }
 
   for _, client in ipairs(clients) do
-    vim.lsp.Client:stop(client.id)
+    client:stop()
   end
 
   vim.defer_fn(function()
