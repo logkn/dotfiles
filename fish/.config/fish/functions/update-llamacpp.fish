@@ -1,4 +1,5 @@
 function update-llamacpp
+    set -l original_dir (pwd)
     # Define the absolute path to llama.cpp
     set LLAMA_DIR "/run/media/logan/storage/Development/OpenSource/llama.cpp"
 
@@ -33,4 +34,6 @@ function update-llamacpp
     cmake --build .
 
     echo "✅ Update and build complete!"
+
+    cd $original_dir
 end

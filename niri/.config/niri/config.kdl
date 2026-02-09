@@ -270,7 +270,7 @@ layout {
 spawn-at-startup "nm-applet"
 spawn-at-startup "swaync"
 spawn-at-startup "waybar"
-spawn-at-startup "hyprpaper"
+// spawn-at-startup "hyprpaper"
 spawn-at-startup "clipboard-sync"
 spawn-sh-at-startup "~/.config/niri/scripts/game-autofocus.sh"
 
