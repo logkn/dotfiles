@@ -74,6 +74,10 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+environment {
+    QT_QPA_PLATFORMTHEME "qt6ct"
+}
+
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
 // The built-in laptop monitor is usually called "eDP-1".
@@ -103,6 +107,7 @@ output "HDMI-A-1" {
 layout {
     // Set gaps around windows in logical pixels.
     gaps 16
+    background-color "transparent"
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -112,12 +117,6 @@ layout {
     //   together with the previously focused column.
     center-focused-column "never"
 
-    blur {
-        on
-        passes 2 // number of times to apply the blur effect
-        radius 12.0 // radius of the blur effect
-        noise 0.0 //add grain to the blur
-    }
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -151,102 +150,6 @@ layout {
     // Alternatively, you can override it with a window rule called
     // `draw-border-with-background`.
 
-    // You can change how the focus ring looks.
-    focus-ring {
-        // Uncomment this line to disable the focus ring.
-        // off
-
-        // How many logical pixels the ring extends out from the windows.
-        width 1
-
-        // Colors can be set in a variety of ways:
-        // - CSS named colors: "red"
-        // - RGB hex: "#rgb", "#rgba", "#rrggbb", "#rrggbbaa"
-        // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
-
-        // Color of the ring on the active monitor.
-        active-color "#fe8019"
-
-        // Color of the ring on inactive monitors.
-        //
-        // The focus ring only draws around the active window, so the only place
-        // where you can see its inactive-color is on other monitors.
-        inactive-color "#50494500"
-
-        // You can also use gradients. They take precedence over solid colors.
-        // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
-        // The angle is the same as in linear-gradient, and is optional,
-        // defaulting to 180 (top-to-bottom gradient).
-        // You can use any CSS linear-gradient tool on the web to set these up.
-        // Changing the color space is also supported, check the wiki for more info.
-        //
-        active-gradient from="#ffffff40" to="#ffffff10" angle=120
-
-        // You can also color the gradient relative to the entire view
-        // of the workspace, rather than relative to just the window itself.
-        // To do that, set relative-to="workspace-view".
-        //
-        // inactive-gradient from="#504945" to="#427b58" angle=60
-    }
-
-    // You can also add a border. It's similar to the focus ring, but always visible.
-    // Temporarily disable window borders to evaluate look without them.
-    border {
-        // The settings are the same as for the focus ring.
-        // If you enable the border, you probably want to disable the focus ring.
-        off
-
-        width 4
-        active-color "#ffc87f"
-        inactive-color "#505050"
-
-        // Color of the border around windows that request your attention.
-        urgent-color "#9b0000"
-
-        // Gradients can use a few different interpolation color spaces.
-        // For example, this is a pastel rainbow gradient via in="oklch longer hue".
-        //
-        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
-
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-    }
-
-    // You can enable drop shadows for windows.
-    shadow {
-        // Uncomment the next line to enable shadows.
-        // on
-
-        // By default, the shadow draws only around its window, and not behind it.
-        // Uncomment this setting to make the shadow draw behind its window.
-        //
-        // Note that niri has no way of knowing about the CSD window corner
-        // radius. It has to assume that windows have square corners, leading to
-        // shadow artifacts inside the CSD rounded corners. This setting fixes
-        // those artifacts.
-        //
-        // However, instead you may want to set prefer-no-csd and/or
-        // geometry-corner-radius. Then, niri will know the corner radius and
-        // draw the shadow correctly, without having to draw it behind the
-        // window. These will also remove client-side shadows if the window
-        // draws any.
-        //
-        // draw-behind-window true
-
-        // You can change how shadows look. The values below are in logical
-        // pixels and match the CSS box-shadow properties.
-
-        // Softness controls the shadow blur radius.
-        softness 18
-
-        // Spread expands the shadow.
-        spread 2
-
-        // Offset moves the shadow relative to the window.
-        offset x=0 y=4
-
-        // You can also change the shadow color and opacity.
-        color "#0005"
-    }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
     // You can think of them as a kind of outer gaps. They are set in logical pixels.
@@ -269,8 +172,8 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "nm-applet"
 spawn-at-startup "swaync"
-spawn-at-startup "waybar"
-// spawn-at-startup "hyprpaper"
+// spawn-at-startup "waybar"
+spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "clipboard-sync"
 spawn-sh-at-startup "~/.config/niri/scripts/game-autofocus.sh"
 
@@ -332,33 +235,41 @@ window-rule {
     open-on-workspace "gaming"
 }
 
+window-rule {
+  // Rounded corners for a modern look.
+  geometry-corner-radius 20
 
-// window-rule {
-//     match 
-//
-// }
+  // Clips window contents to the rounded corner boundaries.
+  clip-to-geometry true
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
 
 
 layer-rule {
     match namespace="rofi"
     opacity 0.8
-    blur {
-        on
-        passes 3 // number of times to apply the blur effect
-        radius 12.0 // radius of the blur effect
-        noise 0.0 //add grain to the blur
-    }
 }
 
 
 layer-rule {
     match namespace="waybar"
-    blur {
-        on
-        passes 3 // number of times to apply the blur effect
-        radius 12.0 // radius of the blur effect
-        noise 0.0 //add grain to the blur
-    }
+}
+
+// Set the regular wallpaper on the backdrop.
+layer-rule {
+  match namespace="^noctalia-wallpaper*"
+  place-within-backdrop true
+}
+
+// Optionally, disable the workspace shadows in the overview.
+overview {
+  workspace-shadow {
+    off
+  }
 }
 
 
@@ -435,9 +346,10 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+B hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
     Mod+G hotkey-overlay-title="Open Steam (Big Picture)" { spawn "~/.config/niri/scripts/steam-start.sh"; }
-    Mod+E hotkey-overlay-title="File Explorer" { spawn "dolphin"; }
-    Mod+R hotkey-overlay-title="Launcher" { spawn "~/.config/rofi/launchers/type-3/launcher.sh"; }
-    Mod+M hotkey-overlay-title="Power Menu" { spawn "~/.config/rofi/powermenu/type-4/powermenu.sh"; }
+    Mod+E hotkey-overlay-title="File Explorer" { spawn "nemo"; }
+    Mod+R hotkey-overlay-title="Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+M hotkey-overlay-title="Power Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+    Mod+Comma { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -599,9 +511,9 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
-    Mod+Comma  { consume-window-into-column; }
-    // Expel the bottom window from the focused column to the right.
-    Mod+Period { expel-window-from-column; }
+    // Mod+Comma  { consume-window-into-column; }
+    // // Expel the bottom window from the focused column to the right.
+    // Mod+Period { expel-window-from-column; }
 
     // Mod+R { switch-preset-column-width; }
     // Cycling through the presets in reverse order is also possible.
@@ -686,3 +598,6 @@ cursor {
 workspace "gaming" {
     open-on-output "DP-2"
 }
+
+include "./noctalia.kdl"
+
