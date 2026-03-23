@@ -171,6 +171,7 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "nm-applet"
+spawn-at-startup "fcitx5 -d"
 spawn-at-startup "swaync"
 // spawn-at-startup "waybar"
 spawn-at-startup "qs" "-c" "noctalia-shell"
@@ -244,8 +245,8 @@ window-rule {
 }
 
 debug {
-  // Allows notification actions and window activation from Noctalia.
-  honor-xdg-activation-with-invalid-serial
+  // Prevent most newly created windows from stealing focus unless activation is explicit.
+  strict-new-window-focus-policy
 }
 
 
@@ -600,4 +601,3 @@ workspace "gaming" {
 }
 
 include "./noctalia.kdl"
-
