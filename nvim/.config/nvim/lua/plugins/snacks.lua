@@ -371,6 +371,9 @@ return {
             },
           },
           follow_file = true,
+          matcher = {
+            fuzzy = true,
+          },
           win = {
             list = {
               keys = {
