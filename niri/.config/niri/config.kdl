@@ -175,6 +175,8 @@ spawn-at-startup "fcitx5 -d"
 spawn-at-startup "swaync"
 // spawn-at-startup "waybar"
 spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "playerctld" "daemon"
+spawn-at-startup "mpris-proxy"
 spawn-at-startup "clipboard-sync"
 spawn-sh-at-startup "~/.config/niri/scripts/game-autofocus.sh"
 
@@ -365,6 +367,10 @@ binds {
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    // Pause the most recently active MPRIS player from either a keyboard media key
+    // or a headset button that gets mapped to a media key event.
+    XF86AudioPlay        allow-when-locked=true { spawn "playerctl" "--player=playerctld" "pause"; }
+    XF86AudioPause       allow-when-locked=true { spawn "playerctl" "--player=playerctld" "pause"; }
 
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
