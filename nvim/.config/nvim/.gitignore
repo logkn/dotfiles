@@ -7,3 +7,4 @@ spell/
 lazy-lock.json
 
 .claude
+nvim.log
