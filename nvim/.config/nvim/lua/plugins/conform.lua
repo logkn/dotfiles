@@ -59,10 +59,21 @@ return {
       -- yaml = { "yamllint" },
     },
 
-    format_on_save = {
-      timeout_ms = 2000,
-      lsp_format = 'fallback',
-    },
+    format_on_save = function(bufnr)
+      if vim.g.autoformat == false or vim.b[bufnr].autoformat == false then
+        return nil
+      end
+
+      if vim.b[bufnr].save_without_format then
+        vim.b[bufnr].save_without_format = false
+        return nil
+      end
+
+      return {
+        timeout_ms = 2000,
+        lsp_format = 'fallback',
+      }
+    end,
   },
   init = function()
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
