@@ -8,3 +8,4 @@ lazy-lock.json
 
 .claude
 nvim.log
+.nvimlog
