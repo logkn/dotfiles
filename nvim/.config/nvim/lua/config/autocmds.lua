@@ -147,6 +147,23 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
   end,
 })
 
+vim.api.nvim_create_user_command('WNoFmt', function()
+  vim.b.save_without_format = true
+  local ok, err = pcall(vim.cmd.write)
+
+  if vim.b.save_without_format then
+    vim.b.save_without_format = false
+  end
+
+  if not ok then
+    error(err)
+  end
+end, {
+  desc = 'Write current buffer without autoformat',
+})
+
+vim.cmd [[cnoreabbrev <expr> wnofmt getcmdtype() == ':' && getcmdline() ==# 'wnofmt' ? 'WNoFmt' : 'wnofmt']]
+
 -- Hide Copilot suggestions when Blink menu is open
 -- vim.api.nvim_create_autocmd('User', {
 --   pattern = 'BlinkCmpMenuOpen',
