@@ -178,6 +178,7 @@ spawn-at-startup "qs" "-c" "noctalia-shell"
 spawn-at-startup "playerctld" "daemon"
 spawn-at-startup "mpris-proxy"
 spawn-at-startup "clipboard-sync"
+spawn-at-startup "dropbox"
 spawn-sh-at-startup "~/.config/niri/scripts/game-autofocus.sh"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -567,12 +568,12 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Alt+Minus { spawn "~/.config/niri/scripts/type-dash.sh" "en"; }
-    Alt+Shift+Minus { spawn "~/.config/niri/scripts/type-dash.sh" "em"; }
+    Alt+Minus { spawn-sh "~/.config/niri/scripts/type-dash.sh en"; }
+    Alt+Shift+Minus { spawn-sh "~/.config/niri/scripts/type-dash.sh em"; }
 
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Mod+S { spawn-sh "~/.config/niri/scripts/screenshot-region.sh clipboard"; }
+    // Ctrl+Print { screenshot-screen; }
+    Mod+Shift+S { spawn-sh "~/.config/niri/scripts/screenshot-region.sh"; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here

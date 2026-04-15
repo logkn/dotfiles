@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Give the compositor a brief moment to release the triggering modifiers
+# before we inject the Unicode character into the focused client.
+readonly TYPE_DELAY_MS=40
+
 if [[ $# -ne 1 ]]; then
     echo "Usage: $0 <en|em>" >&2
     exit 1
@@ -19,4 +23,4 @@ case "$1" in
         ;;
 esac
 
-exec wtype "$char"
+exec wtype -s "$TYPE_DELAY_MS" "$char"
