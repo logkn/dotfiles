@@ -12,7 +12,6 @@ keybind = ctrl+ =ignore
 keybind = ctrl+ >c=new_tab
 keybind = ctrl+ >n=next_tab
 keybind = ctrl+ >p=previous_tab
-keybind = global:cmd+enter=toggle_quick_terminal
 keybind = ctrl+ >x=close_surface
 
 keybind = ctrl+ >shift+j=new_split:down

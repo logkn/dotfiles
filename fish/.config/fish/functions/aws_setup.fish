@@ -1,4 +1,5 @@
-function aws_setup --wraps=' aws codeartifact login                 --tool npm                 --domain gp-prod                 --domain-owner 237156726900                 --repository ai-engineering; set -gx ARTIFACT_AUTH_TOKEN (aws codeartifact get-authorization-token                     --domain gp-prod                     --domain-owner 237156726900                     --query authorizationToken --output text)' --description 'alias aws_setup= aws codeartifact login                 --tool npm                 --domain gp-prod                 --domain-owner 237156726900                 --repository ai-engineering; set -gx ARTIFACT_AUTH_TOKEN (aws codeartifact get-authorization-token                     --domain gp-prod                     --domain-owner 237156726900                     --query authorizationToken --output text)'
-   aws codeartifact login                 --tool npm                 --domain gp-prod                 --domain-owner 237156726900                 --repository ai-engineering; set -gx ARTIFACT_AUTH_TOKEN (aws codeartifact get-authorization-token                     --domain gp-prod                     --domain-owner 237156726900                     --query authorizationToken --output text) $argv
-        
+function aws_setup
+    aws codeartifact login --tool npm --domain gp-prod --domain-owner 237156726900 --repository ai-engineering
+    set -gx ARTIFACT_AUTH_TOKEN (aws codeartifact get-authorization-token                     --domain gp-prod                     --domain-owner 237156726900                     --query authorizationToken --output text) $argv
+
 end
