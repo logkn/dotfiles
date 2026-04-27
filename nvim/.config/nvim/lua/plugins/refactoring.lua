@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   'ThePrimeagen/refactoring.nvim',
   dependencies = {
     'nvim-lua/plenary.nvim',
