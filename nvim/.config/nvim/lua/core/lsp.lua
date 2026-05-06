@@ -57,6 +57,21 @@ vim.api.nvim_create_user_command('LspRestart', function()
   restart_lsp()
 end, {})
 
+local function set_copilot_enabled(enabled)
+  vim.lsp.enable('copilot', enabled)
+
+  local state = enabled == false and 'disabled' or 'enabled'
+  vim.notify('Copilot ' .. state .. '.', vim.log.levels.INFO, { title = 'LSP' })
+end
+
+vim.api.nvim_create_user_command('CopilotEnable', function()
+  set_copilot_enabled(true)
+end, { desc = 'Enable Copilot LSP' })
+
+vim.api.nvim_create_user_command('CopilotDisable', function()
+  set_copilot_enabled(false)
+end, { desc = 'Disable Copilot LSP' })
+
 local function lsp_status()
   local bufnr = vim.api.nvim_get_current_buf()
   local clients = vim.lsp.get_clients { bufnr = bufnr }
