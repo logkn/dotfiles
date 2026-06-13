@@ -83,23 +83,24 @@ environment {
 // The built-in laptop monitor is usually called "eDP-1".
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
-output "DP-1" {
-    mode "3440x1440@164.900"
-    scale 1
-    position x=0 y=0
-}
-
 output "DP-2" {
     mode "2560x1440@144"
     scale 1
     position x=440 y=1440
 }
 
-output "HDMI-A-1" {
-    mode "3840x2160@119.88"
+output "DP-1" {
+    mode "3440x1440@164.900"
     scale 1
-    position x=0 y=2880
+    position x=0 y=0
 }
+
+
+// output "HDMI-A-1" {
+//     mode "3840x2160@119.88"
+//     scale 1
+//     position x=0 y=2880
+// }
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -174,7 +175,7 @@ spawn-at-startup "nm-applet"
 spawn-at-startup "fcitx5 -d"
 spawn-at-startup "swaync"
 // spawn-at-startup "waybar"
-spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-sh-at-startup "systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE NIRI_SOCKET && systemctl --user restart noctalia-shell.service"
 spawn-at-startup "playerctld" "daemon"
 spawn-at-startup "mpris-proxy"
 spawn-at-startup "clipboard-sync"
