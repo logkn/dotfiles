@@ -344,6 +344,27 @@ window-rule {
     }
 }
 
+// Keep ChatGPT utility overlays, such as the Codex pet, legible when they are
+// not focused. The main ChatGPT window remains governed by the normal rules.
+window-rule {
+    match app-id=r#"^ChatGPT$"# is-floating=true
+
+    opacity 1.0
+
+    focus-ring {
+        off
+    }
+
+    shadow {
+        off
+    }
+
+    background-effect {
+        blur false
+        xray false
+    }
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
