@@ -1,17 +1,25 @@
 [options]
 focus_follows_mouse = true
 mouse_follows_focus = true
-dim_inactive_windows = -0.05
 animation_speed = 80
 preset_column_widths = [0.5, 1.0]
-swipe_gesture_fingers = 4
 # auto_center = true
+
+[swipe.gesture]
+fingers_count = 4
 
 [padding]
 top = 8
 bottom = 8
 left = 8
 right = 8
+
+[decorations]
+# Avoid menu-bar rendering load and intermittent keyboard event-tap failures.
+workspace_menu_status = false
+
+[decorations.inactive.dim]
+opacity = -0.05
 
 [decorations.active.border]
 enabled = true
