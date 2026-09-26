@@ -73,6 +73,11 @@ title = "Unimportant popup window"
 dont_focus = true
 index = 100
 
+[windows.codex_annotation]
+bundle_id = "com.openai.codex"
+title = "^Browser comment$"
+floating = true
+
 [windows.all]
 # Match Niri's 16-pixel gap with 8 pixels of inset on each window edge.
 title = ".*"
