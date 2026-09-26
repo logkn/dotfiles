@@ -34,6 +34,13 @@ if test -f ~/.fish_profile
     source ~/.fish_profile
 end
 
+# Add homebrew to PATH
+if test -d /opt/homebrew/bin
+    if not contains -- /opt/homebrew/bin $PATH
+        set -p PATH /opt/homebrew/bin
+    end
+end
+
 # Add ~/.local/bin to PATH
 if test -d ~/.local/bin
     if not contains -- ~/.local/bin $PATH
@@ -45,13 +52,6 @@ end
 if test -d ~/Applications/depot_tools
     if not contains -- ~/Applications/depot_tools $PATH
         set -p PATH ~/Applications/depot_tools
-    end
-end
-
-# Add homebrew to PATH
-if test -d /opt/homebrew/bin
-    if not contains -- /opt/homebrew/bin $PATH
-        set -p PATH /opt/homebrew/bin
     end
 end
 
