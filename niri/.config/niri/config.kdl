@@ -83,16 +83,18 @@ environment {
 // The built-in laptop monitor is usually called "eDP-1".
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
+// LG 27GL850 (top), centered over the ultrawide.
 output "DP-2" {
     mode "2560x1440@144"
     scale 1
-    position x=440 y=1440
+    position x=440 y=0
 }
 
+// Alienware AW3423DWF (bottom).
 output "DP-1" {
     mode "3440x1440@164.900"
     scale 1
-    position x=0 y=0
+    position x=0 y=1440
 }
 
 
@@ -171,6 +173,13 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
+// Completes the kwallet PAM handshake so ksecretd unlocks the wallet and takes
+// org.freedesktop.secrets on the session bus. plasmalogin's PAM stack starts
+// `ksecretd --pam-login`, but it blocks until this runs; the shipped
+// /etc/xdg/autostart/pam_kwallet_init.desktop is marked X-systemd-skip=true, so
+// niri's xdg-desktop-autostart never fires it. Without this, nothing owns
+// org.freedesktop.secrets and apps like Claude Desktop can't persist logins.
+spawn-at-startup "/usr/lib/pam_kwallet_init"
 spawn-at-startup "nm-applet"
 spawn-at-startup "fcitx5 -d"
 spawn-at-startup "swaync"
@@ -389,6 +398,14 @@ binds {
     Mod+M hotkey-overlay-title="Power Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+Comma { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+
+    // Alienware AW3423DWF input selection over DDC/CI.
+    Mod+Alt+1 repeat=false allow-inhibiting=false hotkey-overlay-title="Alienware: PC (DP1)" {
+        spawn "ddcutil" "--model" "AW3423DWF" "setvcp" "60" "0x0f";
+    }
+    Mod+Alt+2 repeat=false allow-inhibiting=false hotkey-overlay-title="Alienware: Mac (DP2)" {
+        spawn "ddcutil" "--model" "AW3423DWF" "setvcp" "60" "0x13";
+    }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
