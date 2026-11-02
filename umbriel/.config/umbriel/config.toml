@@ -148,6 +148,7 @@ delay_ms = 500
 action = "overview-open"
 
 [keybinds]
+"Mod+T" = { action = "spawn ~/.config/umbriel/scripts/toggle-visual-effects.sh", repeat = false }
 "Mod+Shift+Slash" = { action = "cheatsheet-toggle" }
 "Mod+Return" = { action = "spawn ghostty", repeat = false }
 "Mod+B" = { action = "spawn zen-browser", repeat = false }

@@ -11,10 +11,8 @@ readonly screenshot_dir="${HOME}/Pictures/Screenshots"
 readonly timestamp="$(date '+%Y-%m-%d %H-%M-%S')"
 readonly screenshot_path="${screenshot_dir}/Screenshot from ${timestamp}.png"
 
-region="$(slurp)"
-
 # Cancel quietly when the selection is dismissed.
-if [[ -z "${region}" ]]; then
+if ! region="$(slurp)" || [[ -z "${region}" ]]; then
     exit 0
 fi
 
