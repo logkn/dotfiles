@@ -182,9 +182,10 @@ layout {
 spawn-at-startup "/usr/lib/pam_kwallet_init"
 spawn-at-startup "nm-applet"
 spawn-at-startup "fcitx5 -d"
-spawn-at-startup "swaync"
+// Noctalia v5 provides notifications; keep SwayNC as a fallback.
+// spawn-at-startup "swaync"
 // spawn-at-startup "waybar"
-spawn-sh-at-startup "systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE NIRI_SOCKET && systemctl --user restart noctalia-shell.service"
+spawn-at-startup "env" "TERMINAL=ghostty" "noctalia"
 spawn-at-startup "playerctld" "daemon"
 spawn-at-startup "mpris-proxy"
 spawn-at-startup "clipboard-sync"
@@ -394,9 +395,9 @@ binds {
     Mod+B hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
     Mod+G hotkey-overlay-title="Open Steam (Big Picture)" { spawn "~/.config/niri/scripts/steam-start.sh"; }
     Mod+E hotkey-overlay-title="File Explorer" { spawn "nemo"; }
-    Mod+R hotkey-overlay-title="Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+M hotkey-overlay-title="Power Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
-    Mod+Comma { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+    Mod+R hotkey-overlay-title="Launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+M hotkey-overlay-title="Power Menu" { spawn "noctalia" "msg" "panel-toggle" "session"; }
+    Mod+Comma { spawn "noctalia" "msg" "settings-toggle"; }
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Alienware AW3423DWF input selection over DDC/CI.
