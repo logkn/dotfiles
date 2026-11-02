@@ -30,3 +30,6 @@ keybind = ctrl+ >f=toggle_split_zoom
 keybind = shift+enter=text:\n
 
 keybind = super+r=reload_config
+
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
